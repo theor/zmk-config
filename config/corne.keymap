@@ -12,8 +12,8 @@
         conditional_layers {
                 compatible = "zmk,conditional-layers";
                 tri_layer {
-                if-layers = <1 2>;
-                then-layer = <3>;
+                  if-layers = <1 2>;
+                  then-layer = <3>;
                 };
         };
         keymap {
@@ -70,12 +70,12 @@
 // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
-                };
                         bindings = <
    &kp  F1  &kp F2 &kp F3 &kp F4 &kp F5 &kp F6   &kp F7 &kp F8  &kp F9 &kp F10 &kp F11 &kp F12
    &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
    &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
+                };
         };
 };
