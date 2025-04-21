@@ -22,6 +22,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            display-name = "def";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
@@ -37,6 +38,7 @@
         };
 
         lower_layer {
+            display-name = "lower";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
             // |      | Home| Up  | End | Del |     |   | LFT | DWN |  UP | RGT |     |      |
@@ -52,6 +54,7 @@
         };
 
         raise_layer {
+            display-name = "raise";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
             // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -67,6 +70,7 @@
         };
 
         adjust_layer {
+            display-name = "adjust";
             // -----------------------------------------------------------------------------------------
             // |  F1  |  F2 |  F3 |  F4 |  F5 |  F6 |   |  F7 |  F8 |  F9 | F10 | F11 | F12  |
             // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -82,6 +86,7 @@
         };
 
         nav {
+            display-name = "nav";
             bindings = <
 &kp PRINTSCREEN  &kp HOME  &kp UP    &kp END    &kp RET   &kp PG_UP    &kp N7  &kp N8  &kp N9   &trans  &trans  &trans
 &trans           &kp LEFT  &kp DOWN  &kp RIGHT  &kp BSPC  &kp PG_DN    &kp N4  &kp N5  &kp N6   &trans  &trans  &trans
@@ -91,6 +96,7 @@
         };
 
         gaming {
+            display-name = "game";
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
