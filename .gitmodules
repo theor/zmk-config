@@ -1,0 +1,3 @@
+[submodule "zmk-display"]
+	path = zmk-display
+	url = git@github.com:theor/zmk-display.git

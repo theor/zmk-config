@@ -1,0 +1,3 @@
+ west build -p -d  build/right -b nice_nano_v2  -S studio-rpc-usb-uart -- -DSHIELD="corne_right custom_display" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-display" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y 
+
+ west build -p -d  build/left -b nice_nano_v2  -S studio-rpc-usb-uart -- -DSHIELD="corne_left custom_display" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-display" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n 
