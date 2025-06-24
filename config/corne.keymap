@@ -12,12 +12,6 @@
 
 / {
       behaviors {
-        kt_on: key_toggle_on_only {
-            compatible = "zmk,behavior-key-toggle";
-            #binding-cells = <1>;
-            display-name = "Key Toggle On";
-            toggle-mode = "on";
-        };
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -122,7 +116,7 @@
 &kp PRINTSCREEN  &kp PG_UP &kp HOME  &kp UP    &kp END      &kp RET      &kp N7  &kp N8  &kp N9   &trans  &trans  &trans
 &trans           &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT    &kp BSPC     &kp N4  &kp N5  &kp N6   &trans  &trans  &trans
 &trans           &trans    &kp BSPC  &trans    &trans       &kp DEL      &kp N1  &kp N2  &kp N3   &trans  &trans  &trans
-                                     &trans    &kt_on LGUI  &trans       &trans  &kp N0  &kp DOT
+                                     &trans    &kt LGUI     &trans       &trans  &kp N0  &kp DOT
             >;
         };
 
