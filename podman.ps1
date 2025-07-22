@@ -1,0 +1,1 @@
+podman run -it --rm   --security-opt label=disable   --workdir /workspaces/zmk   -v C:\Users\theor\zmk:/workspaces/zmk   -v C:\Users\theor\zmk-config:/workspaces/zmk-config   -v C:\Users\theor\zmk-config:/workspaces/zmk-modules   -p 3000:3000   zmk /bin/bash
