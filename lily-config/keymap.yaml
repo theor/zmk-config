@@ -1,0 +1,211 @@
+layout: {zmk_keyboard: lily58}
+layers:
+  default:
+  - [ESC, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '`']
+  - [TAB, Q, W, E, R, T, Y, U, I, O, P, '-']
+  - - LCTRL
+    - {t: A, h: LGUI}
+    - {t: S, h: LEFT ALT}
+    - {t: D, h: LSHFT}
+    - {t: F, h: LCTRL}
+    - G
+    - H
+    - {t: J, h: LCTRL}
+    - {t: K, h: LSHFT}
+    - {t: L, h: LEFT ALT}
+    - {t: ;, h: LGUI}
+    - ''''
+  - - {t: '&caps_word', h: LSHFT}
+    - Z
+    - X
+    - C
+    - V
+    - B
+    - '['
+    - ']'
+    - N
+    - M
+    - ','
+    - .
+  - - /
+    - RSHFT
+    - LGUI
+    - LALT
+    - {t: BSPC, h: lower}
+    - {t: SPACE, h: nav}
+    - RET
+    - {t: BSPC, h: raise}
+    - RALT
+    - RGUI
+  lower:
+  - - BT CLR
+    - {t: BT, h: '0'}
+    - {t: BT, h: '1'}
+    - {t: BT, h: '2'}
+    - {t: BT, h: '3'}
+    - {t: BT, h: '4'}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12]
+  - ['`', '!', '@', '#', $, '%', ^, '&', '*', (, ), '~']
+  - - {t: ▽, type: trans}
+    - Ctl+Z
+    - Ctl+X
+    - Ctl+C
+    - Ctl+V
+    - Ctl+Z
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '-'
+    - +
+    - '{'
+  - - '}'
+    - '|'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - Ctl+Z
+    - Ctl+C
+    - Ctl+V
+    - Ctl+X
+  raise:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - '`'
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+    - '0'
+    - {t: ▽, type: trans}
+  - - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+    - {t: ▽, type: trans}
+    - LEFT
+    - DOWN
+    - UP
+    - RIGHT
+    - {t: ▽, type: trans}
+  - - F7
+    - F8
+    - F9
+    - F10
+    - F11
+    - F12
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - KP PLUS
+    - '-'
+    - '='
+    - '['
+  - - ']'
+    - \
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  nav:
+  - - '&bootloader'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - '&swap'
+    - PG UP
+    - HOME
+    - UP
+    - END
+    - RET
+    - '7'
+    - '8'
+    - '9'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - '&ctrl_h'
+    - PG DN
+    - LEFT
+    - DOWN
+    - RIGHT
+    - BSPC
+    - '4'
+    - '5'
+    - '6'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - '&shift_h'
+    - {t: ▽, type: trans}
+    - BSPC
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - DEL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '1'
+    - '2'
+    - '3'
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '&mv_win'
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '0'
+    - .
+combos:
+- p: [31, 32]
+  k: '{'
+- p: [32, 33]
+  k: '}'
+- p: [19, 20]
+  k: (
+- p: [20, 21]
+  k: )
+- p: [45, 46]
+  k: '['
+- p: [46, 47]
+  k: ']'
+- p: [18, 19]
+  k: <
+- p: [30, 31]
+  k: '>'

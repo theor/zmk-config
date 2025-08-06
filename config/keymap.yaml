@@ -1,0 +1,175 @@
+layout: {zmk_keyboard: corne}
+layers:
+  def:
+  - [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC]
+  - - LCTRL
+    - {t: A, h: LGUI}
+    - {t: S, h: LEFT ALT}
+    - {t: D, h: LSHFT}
+    - {t: F, h: LCTRL}
+    - G
+    - H
+    - {t: J, h: LCTRL}
+    - {t: K, h: LSHFT}
+    - {t: L, h: LEFT ALT}
+    - {t: ;, h: LGUI}
+    - ''''
+  - [LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC]
+  - - LEFT ALT
+    - {t: BSPC, h: lower}
+    - {t: SPACE, h: nav}
+    - RET
+    - raise
+    - LGUI
+  lower:
+  - [Alt+TAB, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', BSPC]
+  - - {t: ▽, type: trans}
+    - '&mkp MB2'
+    - '&mmv MOVE_UP'
+    - '&mkp MB1'
+    - DEL
+    - {t: ▽, type: trans}
+    - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+  - - LSHFT
+    - '&mmv MOVE_LEFT'
+    - '&mmv MOVE_DOWN'
+    - '&mmv MOVE_RIGHT'
+    - BSPC
+    - {t: ▽, type: trans}
+    - F7
+    - F8
+    - F9
+    - F10
+    - F11
+    - F12
+  - - {t: ▽, type: trans}
+    - {type: held}
+    - SPACE
+    - RET
+    - {t: ▽, type: trans}
+    - LGUI
+  raise:
+  - [TAB, '!', '@', '#', $, '%', ^, '&', '*', (, ), BSPC]
+  - - LCTRL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '-'
+    - '='
+    - '['
+    - ']'
+    - \
+    - '`'
+  - - LSHFT
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - _
+    - +
+    - '{'
+    - '}'
+    - '|'
+    - '~'
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - SPACE
+    - RET
+    - {type: held}
+    - LGUI
+  adjust:
+  - [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, '&bootloader']
+  - [LCTRL, BT PRV, BT NXT, OUT TOG, OUT BLE, BT CLR, '-', '=', '[', ']', \, '`']
+  - - LSHFT
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - OUT BLE
+    - +
+    - '{'
+    - '}'
+    - '|'
+    - '~'
+  - - {t: ▽, type: trans}
+    - {type: held}
+    - SPACE
+    - RET
+    - {type: held}
+    - LGUI
+  nav:
+  - - {t: ▽, type: trans}
+    - PG UP
+    - HOME
+    - UP
+    - END
+    - RET
+    - '7'
+    - '8'
+    - '9'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - PRINTSCREEN
+  - - {t: ▽, type: trans}
+    - PG DN
+    - LEFT
+    - DOWN
+    - RIGHT
+    - BSPC
+    - '4'
+    - '5'
+    - '6'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - BSPC
+    - {t: ▽, type: trans}
+    - DEL
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '1'
+    - '2'
+    - '3'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - '0'
+    - .
+  game:
+  - [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC]
+  - [LCTRL, A, S, D, F, G, H, J, K, L, ;, '''']
+  - [LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC]
+  - [LEFT ALT, lower, SPACE, RET, raise, LGUI]
+combos:
+- p: [0, 1]
+  k: ESC
+- p: [7, 8]
+  k: (
+- p: [8, 9]
+  k: )
+- p: [19, 20]
+  k: '['
+- p: [20, 21]
+  k: ']'
+- p: [31, 32]
+  k: '{'
+- p: [32, 33]
+  k: '}'
+- p: [6, 7]
+  k: <
+- p: [18, 19]
+  k: '>'
