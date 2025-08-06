@@ -1,3 +1,6 @@
 [submodule "zmk-display"]
 	path = zmk-display
 	url = git@github.com:theor/zmk-display.git
+[submodule "zmk-helpers"]
+	path = zmk-helpers
+	url = git@github.com:urob/zmk-helpers.git
