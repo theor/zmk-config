@@ -26,12 +26,12 @@
             display-name = "Key Toggle off";
             toggle-mode = "off";
         };
-        mv_win: mv_win {
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LGUI>, <&none>, <&kt LGUI>;
-            ignored-key-positions = <ARROWS>; // ignore arrows
-        };
+        // mv_win: mv_win {
+        //     compatible = "zmk,behavior-tri-state";
+        //     #binding-cells = <0>;
+        //     bindings = <&kt LGUI>, <&none>, <&kt LGUI>;
+        //     ignored-key-positions = <ARROWS>; // ignore arrows
+        // };
         ctrl_h: ctrl_h {
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
@@ -186,7 +186,7 @@
 &swap            &kp PG_UP &kp HOME  &kp UP    &kp END      &kp RET                           &kp N7  &kp N8  &kp N9          &trans   &trans    &trans
 &ctrl_h          &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT    &kp BSPC                          &kp N4  &kp N5  &kp N6          &trans   &trans    &trans
 &shift_h         &trans    &kp BSPC  &trans    &trans       &kp DEL   &trans          &trans  &kp N1  &kp N2  &kp N3          &trans   &trans    &trans
-                                            &trans  &trans  &mv_win   &trans          &trans  &trans  &kp N0  &kp DOT      
+                                            &trans  &trans  &trans    &trans          &trans  &trans  &kp N0  &kp DOT      
 >;
         };
     };

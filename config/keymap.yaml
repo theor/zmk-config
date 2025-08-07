@@ -155,6 +155,12 @@ layers:
   - [LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC]
   - [LEFT ALT, lower, SPACE, RET, raise, LGUI]
 combos:
+- p: [26, 28]
+  k: Ctl+X
+- p: [26, 27]
+  k: Ctl+C
+- p: [27, 28]
+  k: Ctl+V
 - p: [0, 1]
   k: ESC
 - p: [7, 8]
@@ -169,6 +175,8 @@ combos:
   k: '{'
 - p: [32, 33]
   k: '}'
+- p: [33, 34]
+  k: \
 - p: [6, 7]
   k: <
 - p: [18, 19]
