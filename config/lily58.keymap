@@ -46,7 +46,7 @@
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-            ignored-key-positions = <LF5 ARROWS>; // ignore left shift and arrows
+            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
         };
         caps: mod_tap {
             compatible = "zmk,behavior-hold-tap";

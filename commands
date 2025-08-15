@@ -1,3 +1,7 @@
  west build -p -d  build/left -b nice_nano_v2  -S studio-rpc-usb-uart -- -DSHIELD="corne_left custom_display" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-display;C:/Users/theor/zmk-config/zmk-helpers" -DCONFIG_ZMK_STUDIO=y
 
  west build -p -d  build/right -b nice_nano_v2  -S studio-rpc-usb-uart -- -DSHIELD="corne_right" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-display;C:/Users/theor/zmk-config/zmk-helpers" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+
+
+west build -p -d  build/lilyl -b nice_nano_v2  -S studio-rpc-usb-uart   -- -DSHIELD="lily58_left nice_view_adapter nice_view" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO=y
+west build -p -d  build/lilyr -b nice_nano_v2  -S studio-rpc-usb-uart   -- -DSHIELD="lily58_right" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
