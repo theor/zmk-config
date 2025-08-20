@@ -31,19 +31,47 @@
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+
+
+// Define mod-morph with a *single* mod trigger for less repetition.
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
+  ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
+                bindings = <BINDING1>, <BINDING2>;)
+
+// Tap: left parenthesis | Shft + tap: right parenthesis.
+SIMPLE_MORPH(par_lr, SFT, &kp LPAR, &kp RPAR)
+SIMPLE_MORPH(bkt_lr, SFT, &kp LBKT, &kp RBKT)
+SIMPLE_MORPH(brc_lr, SFT, &kp LBRC, &kp RBRC)
+SIMPLE_MORPH(lt_gt, SFT, &kp LT, &kp GT)
+SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
+SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
+SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
+
+
 ZMK_COMBO(cut,   &kp LC(X),    LB3 LB1)
 ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2)
 ZMK_COMBO(paste, &kp LC(V),  LB2 LB1)
 
-ZMK_COMBO(lpar, &kp LPAR , RT1 RT2)
-ZMK_COMBO(rpar, &kp RPAR , RT2 RT3)
-ZMK_COMBO(lbkt, &kp LBKT , RM1 RM2)
-ZMK_COMBO(rbkt, &kp RBKT , RM2 RM3)
-ZMK_COMBO(lbrc, &kp LBRC , RB1 RB2)
-ZMK_COMBO(rbrc, &kp RBRC , RB2 RB3)
-ZMK_COMBO(bslh, &kp BSLH , RB3 RB4)
-ZMK_COMBO(lt, &kp LT , RT0 RT1)
-ZMK_COMBO(gt, &kp GT , RM0 RM1)
+
+ZMK_COMBO(lpar, &par_lr  , RT1 RT2)
+ZMK_COMBO(lbkt, &bkt_lr  , RM1 RM2)
+ZMK_COMBO(lbrc, &brc_lr  , RB1 RB2)
+ZMK_COMBO(lt, &lt_gt, RT0 RT1)
+ZMK_COMBO(minus, &minus_und, RM0 RM1)
+ZMK_COMBO(plus, &plus_eq, RB0 RB1)
+ZMK_COMBO(bslh, &bslh_pipe, RB3 RB4)
+
+
+
+// ZMK_COMBO(lpar, &kp LPAR , RT1 RT2)
+// ZMK_COMBO(rpar, &kp RPAR , RT2 RT3)
+// ZMK_COMBO(lbkt, &kp LBKT , RM1 RM2)
+// ZMK_COMBO(rbkt, &kp RBKT , RM2 RM3)
+// ZMK_COMBO(lbrc, &kp LBRC , RB1 RB2)
+// ZMK_COMBO(rbrc, &kp RBRC , RB2 RB3)
+// ZMK_COMBO(bslh, &kp BSLH , RB3 RB4)
+// ZMK_COMBO(lt, &kp LT , RT0 RT1)
+// ZMK_COMBO(gt, &kp GT , RM0 RM1)
 
 
 

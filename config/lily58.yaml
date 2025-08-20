@@ -5,14 +5,14 @@ layers:
   - [TAB, Q, W, E, R, T, Y, U, I, O, P, '-']
   - - LCTRL
     - {t: A, h: LGUI}
-    - {t: S, h: LEFT ALT}
+    - {t: S, h: LALT}
     - {t: D, h: LSHFT}
     - {t: F, h: LCTRL}
     - G
     - H
     - {t: J, h: LCTRL}
     - {t: K, h: LSHFT}
-    - {t: L, h: LEFT ALT}
+    - {t: L, h: LALT}
     - {t: ;, h: LGUI}
     - ''''
   - - {t: '&caps_word', h: LSHFT}
@@ -30,13 +30,13 @@ layers:
   - - /
     - RSHFT
     - LGUI
-    - LALT
+    - DEL
     - {t: BSPC, h: lower}
     - {t: SPACE, h: nav}
     - RET
     - {t: BSPC, h: raise}
-    - RALT
-    - RGUI
+    - INS
+    - PSCRN
   lower:
   - - BT CLR
     - {t: BT, h: '0'}
@@ -53,27 +53,27 @@ layers:
   - [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12]
   - ['`', '!', '@', '#', $, '%', ^, '&', '*', (, ), '~']
   - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - Ctl+Z
-    - Ctl+X
-    - Ctl+C
-    - Ctl+V
-    - Ctl+Z
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - '-'
-    - +
-    - '{'
-  - - '}'
-    - '|'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
-    - Ctl+Z
-    - Ctl+C
-    - Ctl+V
-    - Ctl+X
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
   raise:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -106,10 +106,10 @@ layers:
     - F5
     - F6
     - {t: ▽, type: trans}
-    - LEFT
-    - DOWN
-    - UP
-    - RIGHT
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - F7
     - F8
@@ -119,12 +119,12 @@ layers:
     - F12
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - KP PLUS
-    - '-'
-    - '='
-    - '['
-  - - ']'
-    - \
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -200,20 +200,16 @@ combos:
 - p: [39, 40]
   k: Ctl+V
 - p: [19, 20]
-  k: (
-- p: [20, 21]
-  k: )
+  k: {t: (, s: )}
 - p: [31, 32]
-  k: '['
-- p: [32, 33]
-  k: ']'
+  k: {t: '[', s: ']'}
 - p: [45, 46]
-  k: '{'
-- p: [46, 47]
-  k: '}'
-- p: [47, 48]
-  k: \
+  k: {t: '{', s: '}'}
 - p: [18, 19]
-  k: <
+  k: {t: <, s: '>'}
 - p: [30, 31]
-  k: '>'
+  k: {t: '-', s: _}
+- p: [44, 45]
+  k: {t: +, s: '='}
+- p: [47, 48]
+  k: {t: \, s: '|'}
