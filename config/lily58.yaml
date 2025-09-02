@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: lily58}
 layers:
-  default:
+  Default:
   - [ESC, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '`']
   - [TAB, Q, W, E, R, T, Y, U, I, O, P, '-']
   - - LCTRL
@@ -31,13 +31,13 @@ layers:
     - RSHFT
     - LGUI
     - DEL
-    - {t: BSPC, h: lower}
-    - {t: SPACE, h: nav}
+    - {t: BSPC, h: Lower}
+    - {t: SPACE, h: Nav}
     - RET
-    - {t: BSPC, h: raise}
+    - {t: BSPC, h: Raise}
     - INS
     - PSCRN
-  lower:
+  Lower:
   - - BT CLR
     - {t: BT, h: '0'}
     - {t: BT, h: '1'}
@@ -50,7 +50,18 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12]
+  - - {t: ▽, type: trans}
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+    - '0'
+    - {t: ▽, type: trans}
   - ['`', '!', '@', '#', $, '%', ^, '&', '*', (, ), '~']
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -74,7 +85,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  raise:
+  Raise:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -87,42 +98,42 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - - '`'
-    - '1'
-    - '2'
-    - '3'
-    - '4'
-    - '5'
-    - '6'
-    - '7'
-    - '8'
-    - '9'
-    - '0'
-    - {t: ▽, type: trans}
-  - - F1
-    - F2
-    - F3
-    - F4
-    - F5
-    - F6
+  - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - F7
+    - F7
     - F8
     - F9
-    - F10
-    - F11
     - F12
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - F4
+    - F5
+    - F6
+    - F11
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - F1
+    - F2
+    - F3
+    - F10
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -133,7 +144,7 @@ layers:
     - {type: held}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  nav:
+  Nav:
   - - '&bootloader'
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -189,27 +200,37 @@ layers:
     - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
     - '0'
     - .
+    - {t: ▽, type: trans}
 combos:
 - p: [38, 40]
   k: Ctl+X
+  l: [Default, Nav]
 - p: [38, 39]
   k: Ctl+C
+  l: [Default, Nav]
 - p: [39, 40]
   k: Ctl+V
+  l: [Default, Nav]
 - p: [19, 20]
   k: {t: (, s: )}
+  l: [Default]
 - p: [31, 32]
   k: {t: '[', s: ']'}
+  l: [Default]
 - p: [45, 46]
   k: {t: '{', s: '}'}
+  l: [Default]
 - p: [18, 19]
   k: {t: <, s: '>'}
+  l: [Default]
 - p: [30, 31]
   k: {t: '-', s: _}
+  l: [Default]
 - p: [44, 45]
   k: {t: +, s: '='}
+  l: [Default]
 - p: [47, 48]
   k: {t: \, s: '|'}
+  l: [Default]

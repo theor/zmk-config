@@ -47,19 +47,29 @@ SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
 SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
 SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
 
+#define L_DEF 0
+#ifndef L_LOW
+  #define L_LOW 1
+#endif
+#ifndef L_RAISE
+  #define L_RAISE 2
+#endif
+#ifndef L_NAV
+  #define L_NAV 3
+#endif
 
-ZMK_COMBO(cut,   &kp LC(X),    LB3 LB1)
-ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2)
-ZMK_COMBO(paste, &kp LC(V),  LB2 LB1)
+ZMK_COMBO(cut,   &kp LC(X),  LB3 LB1, L_DEF L_NAV)
+ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
+ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
 
 
-ZMK_COMBO(lpar, &par_lr  , RT1 RT2)
-ZMK_COMBO(lbkt, &bkt_lr  , RM1 RM2)
-ZMK_COMBO(lbrc, &brc_lr  , RB1 RB2)
-ZMK_COMBO(lt, &lt_gt, RT0 RT1)
-ZMK_COMBO(minus, &minus_und, RM0 RM1)
-ZMK_COMBO(plus, &plus_eq, RB0 RB1)
-ZMK_COMBO(bslh, &bslh_pipe, RB3 RB4)
+ZMK_COMBO(lpar,  &par_lr  ,  RT1 RT2,L_DEF)
+ZMK_COMBO(lbkt,  &bkt_lr  ,  RM1 RM2,L_DEF)
+ZMK_COMBO(lbrc,  &brc_lr  ,  RB1 RB2,L_DEF)
+ZMK_COMBO(lt,    &lt_gt,     RT0 RT1,L_DEF)
+ZMK_COMBO(minus, &minus_und, RM0 RM1,L_DEF)
+ZMK_COMBO(plus,  &plus_eq,   RB0 RB1,L_DEF)
+ZMK_COMBO(bslh,  &bslh_pipe, RB3 RB4,L_DEF)
 
 
 
@@ -91,4 +101,73 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-key-positions = <KEYS_L THUMBS>;
     hold-trigger-on-release;
     bindings = <&kp>, <&kp>;
+)
+
+#ifndef ZMK_BASE_LAYER
+  #define ZMK_BASE_LAYER(name, LN, LT, LM, LB, LS, LLH, LH, RN,RT, RM, RS, RB, RH, RRH)                 \
+      ZMK_LAYER(name, LN RN LT RT LM RM LB LS  RS RB LLH LH RH RRH)
+#endif
+
+
+#define EMPTY_LEFT_HAND \
+&trans &trans &trans &trans &trans &trans, \
+&trans &trans &trans &trans &trans &trans, \
+&trans &trans &trans &trans &trans &trans, \
+&trans &trans &trans &trans &trans &trans, &trans, \
+          &trans, &trans &trans &trans
+
+ZMK_BASE_LAYER(Default,
+&kp ESC       &kp N1      &kp N2        &kp N3        &kp N4       &kp N5, 
+&kp TAB       &kp Q       &kp W         &kp E         &kp R        &kp T,
+&kp LCTRL     &hml LGUI A &hml LALT S   &hml LSHFT D  &hml LCTRL F &kp G,
+&caps LSHFT 0 &kp Z       &kp X         &kp C         &kp V        &kp B,          &kp LBKT,
+                                        &kp LGUI,     &kp DEL     &lt L_LOW BSPC   &lt L_NAV SPACE,
+
+              &kp N6      &kp N7        &kp N8        &kp N9       &kp N0          &kp GRAVE,
+              &kp Y       &kp U         &kp I         &kp O        &kp P           &kp MINUS,
+              &kp H       &hmr LCTRL J  &hmr LSHFT K  &hmr LALT L  &hmr LGUI SEMI  &kp SQT,
+&kp RBKT,     &kp N       &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp RSHFT,
+&kp RET       &lt L_RAISE BSPC  &kp INS,&kp PSCRN 
+
+)
+ZMK_BASE_LAYER(Lower,
+&bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    ,
+&trans      &kp N1      &kp N2       &kp N3       &kp N4       &kp N5           ,
+&kp GRAVE   &kp EXCL     &kp AT       &kp HASH     &kp DOLLAR   &kp PRCNT       ,
+&trans      &trans       &trans       &trans       &trans       &kp LC(Z)       , &trans,
+                                      &trans,      &trans       &trans            &trans,
+
+         &trans    &trans    &trans    &trans    &trans    &trans   ,
+         &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans   ,
+         &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp TILDE,
+ &trans, &trans    &trans    &trans    &trans    &trans    &trans   ,
+ &trans  &trans    &trans,   &trans
+)
+
+ZMK_BASE_LAYER(Raise,
+&trans  &trans &trans &trans &trans &trans,
+&trans  &trans &trans &trans &trans &trans,
+&trans  &trans &trans &trans &trans &trans,
+&trans  &trans &trans &trans &trans &trans, &trans,
+                      &trans,&trans &trans &trans,
+
+        &trans  &trans  &trans  &trans   &trans  &trans,
+        &kp F7  &kp F8  &kp F9  &kp F12  &trans  &trans,
+        &kp F4  &kp F5  &kp F6  &kp F11  &trans  &trans,
+&trans, &kp F1  &kp F2  &kp F3  &kp F10  &trans  &trans,
+&trans  &trans  &trans,  &trans
+)
+
+ZMK_BASE_LAYER(Nav,
+&bootloader  &trans    &trans    &trans    &trans     &trans          ,
+&swap        &kp PG_UP &kp HOME  &kp UP    &kp END    &kp RET         ,
+&ctrl_h      &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT  &kp BSPC        ,
+&shift_h     &trans    &kp BSPC  &trans    &trans     &kp DEL,  &trans,
+                                 &trans,   &trans     &trans    &trans,
+
+         &trans  &trans  &trans  &trans  &trans  &trans,
+         &kp N7  &kp N8  &kp N9  &trans  &trans  &trans,
+         &kp N4  &kp N5  &kp N6  &trans  &trans  &trans,
+ &trans, &kp N1  &kp N2  &kp N3  &trans  &trans  &trans,
+ &trans  &kp N0  &kp DOT,&trans  
 )

@@ -1,7 +1,7 @@
-layout: {zmk_keyboard: corne}
+layout: {zmk_keyboard: corne, layout_name: foostan_corne_6col_layout}
 layers:
-  def:
-  - [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC]
+  Default:
+  - [TAB, Q, W, E, R, T, Y, U, I, O, P, '-']
   - - LCTRL
     - {t: A, h: LGUI}
     - {t: S, h: LALT}
@@ -14,100 +14,90 @@ layers:
     - {t: L, h: LALT}
     - {t: ;, h: LGUI}
     - ''''
-  - [LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC]
-  - - LALT
-    - {t: BSPC, h: lower}
-    - {t: SPACE, h: nav}
+  - ['&caps LSHFT 0', Z, X, C, V, B, N, M, ',', ., /, RSHFT]
+  - - DEL
+    - {t: BSPC, h: Lower}
+    - {t: SPACE, h: Nav}
     - RET
-    - raise
-    - LGUI
-  lower:
-  - [Alt+TAB, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', BSPC]
+    - {t: BSPC, h: Raise}
+    - INS
+  Lower:
   - - {t: ▽, type: trans}
-    - '&mkp MB2'
-    - '&mmv MOVE_UP'
-    - '&mkp MB1'
-    - DEL
+    - '1'
+    - '2'
+    - '3'
+    - '4'
+    - '5'
+    - '6'
+    - '7'
+    - '8'
+    - '9'
+    - '0'
     - {t: ▽, type: trans}
-    - F1
-    - F2
-    - F3
-    - F4
-    - F5
-    - F6
-  - - LSHFT
-    - '&mmv MOVE_LEFT'
-    - '&mmv MOVE_DOWN'
-    - '&mmv MOVE_RIGHT'
-    - BSPC
+  - ['`', '!', '@', '#', $, '%', ^, '&', '*', (, ), '~']
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - Ctl+Z
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  Raise:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - F7
     - F8
     - F9
-    - F10
-    - F11
     - F12
-  - - {t: ▽, type: trans}
-    - {type: held}
-    - SPACE
-    - RET
-    - {t: ▽, type: trans}
-    - LGUI
-  raise:
-  - [TAB, '!', '@', '#', $, '%', ^, '&', '*', (, ), BSPC]
-  - - LCTRL
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - '-'
-    - '='
-    - '['
-    - ']'
-    - \
-    - '`'
-  - - LSHFT
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - _
-    - +
-    - '{'
-    - '}'
-    - '|'
-    - '~'
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - SPACE
-    - RET
-    - {type: held}
-    - LGUI
-  adjust:
-  - [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, '&bootloader']
-  - [LCTRL, BT PRV, BT NXT, OUT TOG, OUT BLE, BT CLR, '-', '=', '[', ']', \, '`']
-  - - LSHFT
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
+    - F4
+    - F5
+    - F6
+    - F11
     - {t: ▽, type: trans}
-    - OUT BLE
-    - +
-    - '{'
-    - '}'
-    - '|'
-    - '~'
+    - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
-    - {type: held}
-    - SPACE
-    - RET
-    - {type: held}
-    - LGUI
-  nav:
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - F1
+    - F2
+    - F3
+    - F10
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+  Nav:
+  - - '&swap'
     - PG UP
     - HOME
     - UP
@@ -118,8 +108,8 @@ layers:
     - '9'
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - PRINTSCREEN
-  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - '&ctrl_h'
     - PG DN
     - LEFT
     - DOWN
@@ -131,12 +121,12 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
+  - - '&shift_h'
+    - {t: ▽, type: trans}
     - BSPC
     - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - DEL
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
     - '1'
     - '2'
     - '3'
@@ -149,31 +139,37 @@ layers:
     - {t: ▽, type: trans}
     - '0'
     - .
-  game:
-  - [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC]
-  - [LCTRL, A, S, D, F, G, H, J, K, L, ;, '''']
-  - [LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC]
-  - [LEFT ALT, lower, SPACE, RET, raise, LGUI]
 combos:
 - p: [26, 28]
   k: Ctl+X
+  l: [Default, Nav]
 - p: [26, 27]
   k: Ctl+C
+  l: [Default, Nav]
 - p: [27, 28]
   k: Ctl+V
+  l: [Default, Nav]
 - p: [7, 8]
   k: {t: (, s: )}
+  l: [Default]
 - p: [19, 20]
   k: {t: '[', s: ']'}
+  l: [Default]
 - p: [31, 32]
   k: {t: '{', s: '}'}
+  l: [Default]
 - p: [6, 7]
   k: {t: <, s: '>'}
+  l: [Default]
 - p: [18, 19]
   k: {t: '-', s: _}
+  l: [Default]
 - p: [30, 31]
   k: {t: +, s: '='}
+  l: [Default]
 - p: [33, 34]
   k: {t: \, s: '|'}
+  l: [Default]
 - p: [0, 1]
   k: ESC
+  l: [Default]
