@@ -154,12 +154,12 @@ ZMK_HOLD_TAP(hmr,
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
         };
-        // cswap: cswap {
-        //     compatible = "zmk,behavior-tri-state";
-        //     #binding-cells = <0>;
-        //     bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
-        //     ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
-        // };
+        cswap: cswap {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
+        };
         // shift on hold, tap for caps word
         caps: mod_tap {
             compatible = "zmk,behavior-hold-tap";
@@ -188,7 +188,7 @@ ZMK_BASE_LAYER(Default,
 )
 ZMK_BASE_LAYER(Lower,
 &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    ,
-&swap      &kp N1      &kp N2       &kp N3       &kp N4       &kp N5           ,
+&cswap      &kp N1      &kp N2       &kp N3       &kp N4       &kp N5           ,
 &kp GRAVE   &kp EXCL     &kp AT       &kp HASH     &kp DOLLAR   &kp PRCNT       ,
 &trans      &trans       &trans       &trans       &trans       &kp LC(Z)       , &trans,
                                       &trans,      &trans       &trans            &trans,
