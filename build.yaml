@@ -23,10 +23,16 @@ include:
     shield: corne_right
     snippet: studio-rpc-usb-uart
     # snippet: zmk-usb-logging
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DZMK_KEYBOARD_NAME=corne_r
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=corne_r
   - board: nice_nano_v2
-    shield: corne_left
-    cmake-args: -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=corne_l
+    shield: corne_left custom_display
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DZMK_KEYBOARD_NAME=corne_l
+  - board: nice_nano_v2
+    shield: lily58_left nice_view_adapter nice_view
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DZMK_KEYBOARD_NAME=lily58_l
+  - board: nice_nano_v2
+    shield: lily58_right
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=lily58_r
     # snippet: zmk-usb-logging
   - board: nice_nano_v2
     shield: settings_reset
