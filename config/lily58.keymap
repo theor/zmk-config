@@ -6,58 +6,7 @@
 #include "lily58-rev.h"
 
 #include "base.keymap"
-#include <behaviors.dtsi>
 
-#define ARROWS LT2 LM3 LM2 LM1
-
-/ {
-    behaviors {
-        kt_on: key_toggle_on_only {
-            compatible = "zmk,behavior-key-toggle";
-            #binding-cells = <1>;
-            display-name = "Key Toggle On";
-            toggle-mode = "on";
-        };
-        kt_off: key_toggle_off_only {
-            compatible = "zmk,behavior-key-toggle";
-            #binding-cells = <1>;
-            display-name = "Key Toggle off";
-            toggle-mode = "off";
-        };
-        // mv_win: mv_win {
-        //     compatible = "zmk,behavior-tri-state";
-        //     #binding-cells = <0>;
-        //     bindings = <&kt LGUI>, <&none>, <&kt LGUI>;
-        //     ignored-key-positions = <ARROWS>; // ignore arrows
-        // };
-        ctrl_h: ctrl_h {
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&none>, <&kt LCTRL>, <&kt_off LCTRL>;
-            ignored-key-positions = <ARROWS LB5>; // ignore arrows
-        };
-        shift_h: shift_h {
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&none>, <&kt LSHFT>, <&kt_off LSHFT>;
-            ignored-key-positions = <ARROWS LM5>; // ignore arrows
-        };
-        // shift on hold, tap for caps word
-        swap: swapper {
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
-            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
-        };
-        caps: mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&caps_word>;
-            display-name = "Mod-Tap";
-        };
-    };
 
 //     keymap {
 //         compatible = "zmk,keymap";
@@ -106,7 +55,6 @@
 // >;
 //         };
 //     };
-};
 
 // &trans    &trans &trans &trans  &trans  &trans                         &trans      &trans    &trans    &trans   &trans    &trans
 // &trans    &trans &trans &trans  &trans  &trans                         &trans      &trans    &trans    &trans   &trans    &trans

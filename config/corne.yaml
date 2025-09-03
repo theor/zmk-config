@@ -14,7 +14,18 @@ layers:
     - {t: L, h: LALT}
     - {t: ;, h: LGUI}
     - ''''
-  - ['&caps LSHFT 0', Z, X, C, V, B, N, M, ',', ., /, RSHFT]
+  - - {t: '&caps_word', h: LSHFT}
+    - Z
+    - X
+    - C
+    - V
+    - B
+    - N
+    - M
+    - ','
+    - .
+    - /
+    - RSHFT
   - - DEL
     - {t: BSPC, h: Lower}
     - {t: SPACE, h: Nav}
@@ -22,7 +33,7 @@ layers:
     - {t: BSPC, h: Raise}
     - INS
   Lower:
-  - - {t: ▽, type: trans}
+  - - '&swap'
     - '1'
     - '2'
     - '3'
@@ -140,6 +151,9 @@ layers:
     - '0'
     - .
 combos:
+- p: [36, 24]
+  k: '&bootloader'
+  l: [Default]
 - p: [26, 28]
   k: Ctl+X
   l: [Default, Nav]

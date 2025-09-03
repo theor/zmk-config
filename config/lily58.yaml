@@ -50,7 +50,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
+  - - '&swap'
     - '1'
     - '2'
     - '3'
@@ -204,6 +204,9 @@ layers:
     - .
     - {t: ▽, type: trans}
 combos:
+- p: [51, 36]
+  k: '&bootloader'
+  l: [Default]
 - p: [38, 40]
   k: Ctl+X
   l: [Default, Nav]

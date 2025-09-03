@@ -6,6 +6,7 @@
 
 #include "zmk-helpers/key-labels/42.h"
 
+#include <behaviors.dtsi>
 /*                                      42 KEY MATRIX / LAYOUT MAPPING
 
   ╭────────────────────────┬────────────────────────╮ ╭─────────────────────────┬─────────────────────────╮

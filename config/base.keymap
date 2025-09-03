@@ -18,6 +18,10 @@
 #ifndef KEYS_L
  #error "KEYS_L not defined"
 #endif
+#ifndef ARROWS
+ #define ARROWS LT2 LM3 LM2 LM1
+
+#endif
 
 
 // #define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // left hand
@@ -57,6 +61,9 @@ SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
 #ifndef L_NAV
   #define L_NAV 3
 #endif
+
+ZMK_COMBO(bootload,   &bootloader,  LH2 LB5, L_DEF)
+
 
 ZMK_COMBO(cut,   &kp LC(X),  LB3 LB1, L_DEF L_NAV)
 ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
@@ -109,12 +116,61 @@ ZMK_HOLD_TAP(hmr,
 #endif
 
 
-#define EMPTY_LEFT_HAND \
-&trans &trans &trans &trans &trans &trans, \
-&trans &trans &trans &trans &trans &trans, \
-&trans &trans &trans &trans &trans &trans, \
-&trans &trans &trans &trans &trans &trans, &trans, \
-          &trans, &trans &trans &trans
+/ {
+    behaviors {
+        kt_on: key_toggle_on_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            display-name = "Key Toggle On";
+            toggle-mode = "on";
+        };
+        kt_off: key_toggle_off_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            display-name = "Key Toggle off";
+            toggle-mode = "off";
+        };
+        // mv_win: mv_win {
+        //     compatible = "zmk,behavior-tri-state";
+        //     #binding-cells = <0>;
+        //     bindings = <&kt LGUI>, <&none>, <&kt LGUI>;
+        //     ignored-key-positions = <ARROWS>; // ignore arrows
+        // };
+        ctrl_h: ctrl_h {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kt LCTRL>, <&kt_off LCTRL>;
+            ignored-key-positions = <ARROWS LB5>; // ignore arrows
+        };
+        shift_h: shift_h {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kt LSHFT>, <&kt_off LSHFT>;
+            ignored-key-positions = <ARROWS LM5>; // ignore arrows
+        };
+        swap: swapper {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
+        };
+        // cswap: cswap {
+        //     compatible = "zmk,behavior-tri-state";
+        //     #binding-cells = <0>;
+        //     bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+        //     ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
+        // };
+        // shift on hold, tap for caps word
+        caps: mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&caps_word>;
+            display-name = "Mod-Tap";
+        };
+    };
+};
 
 ZMK_BASE_LAYER(Default,
 &kp ESC       &kp N1      &kp N2        &kp N3        &kp N4       &kp N5, 
@@ -132,7 +188,7 @@ ZMK_BASE_LAYER(Default,
 )
 ZMK_BASE_LAYER(Lower,
 &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    ,
-&trans      &kp N1      &kp N2       &kp N3       &kp N4       &kp N5           ,
+&swap      &kp N1      &kp N2       &kp N3       &kp N4       &kp N5           ,
 &kp GRAVE   &kp EXCL     &kp AT       &kp HASH     &kp DOLLAR   &kp PRCNT       ,
 &trans      &trans       &trans       &trans       &trans       &kp LC(Z)       , &trans,
                                       &trans,      &trans       &trans            &trans,
