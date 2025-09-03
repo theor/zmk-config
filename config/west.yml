@@ -16,8 +16,6 @@ manifest:
     - name: zmk-display
       remote: theor
       revision: main
-      # This points to a west manifest file in the remote module for further imports
-      import: west.yml
     - name: zmk-tri-state
       remote: urob
       revision: main
