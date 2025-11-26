@@ -69,7 +69,7 @@ ZMK_COMBO(cut,   &kp LC(X),  LB3 LB1, L_DEF L_NAV)
 ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
 ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
 
-ZMK_COMBO(reload,  LC(R), LM1 LT1,L_DEF L_NAV)
+ZMK_COMBO(reload, &kp LC(R), LM1 LT1,L_DEF L_NAV)
 
 ZMK_COMBO(lpar,  &par_lr  ,  RT1 RT2,L_DEF)
 ZMK_COMBO(lbkt,  &bkt_lr  ,  RM1 RM2,L_DEF)
