@@ -50,7 +50,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-  - - '&swap'
+  - - '&cswap'
     - '1'
     - '2'
     - '3'
@@ -66,7 +66,7 @@ layers:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - Ctl+C
     - {t: ▽, type: trans}
     - Ctl+Z
     - {t: ▽, type: trans}
@@ -138,7 +138,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - DEL
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
@@ -217,23 +217,23 @@ combos:
   k: Ctl+V
   l: [Default, Nav]
 - p: [19, 20]
-  k: {t: (, s: )}
+  k: '&par_lr'
   l: [Default]
 - p: [31, 32]
-  k: {t: '[', s: ']'}
+  k: '&bkt_lr'
   l: [Default]
 - p: [45, 46]
-  k: {t: '{', s: '}'}
+  k: '&brc_lr'
   l: [Default]
 - p: [18, 19]
-  k: {t: <, s: '>'}
+  k: '&lt_gt'
   l: [Default]
 - p: [30, 31]
-  k: {t: '-', s: _}
+  k: '&minus_und'
   l: [Default]
 - p: [44, 45]
-  k: {t: +, s: '='}
+  k: '&plus_eq'
   l: [Default]
 - p: [47, 48]
-  k: {t: \, s: '|'}
+  k: '&bslh_pipe'
   l: [Default]

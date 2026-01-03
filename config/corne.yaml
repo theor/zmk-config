@@ -1,4 +1,4 @@
-layout: {zmk_keyboard: corne, layout_name: foostan_corne_6col_layout}
+layout: {zmk_keyboard: corne}
 layers:
   Default:
   - [TAB, Q, W, E, R, T, Y, U, I, O, P, '-']
@@ -33,7 +33,7 @@ layers:
     - {t: BSPC, h: Raise}
     - INS
   Lower:
-  - - '&swap'
+  - - '&cswap'
     - '1'
     - '2'
     - '3'
@@ -49,7 +49,7 @@ layers:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - Ctl+C
     - {t: ▽, type: trans}
     - Ctl+Z
     - {t: ▽, type: trans}
@@ -102,7 +102,7 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - DEL
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {type: held}
@@ -164,25 +164,25 @@ combos:
   k: Ctl+V
   l: [Default, Nav]
 - p: [7, 8]
-  k: {t: (, s: )}
+  k: '&par_lr'
   l: [Default]
 - p: [19, 20]
-  k: {t: '[', s: ']'}
+  k: '&bkt_lr'
   l: [Default]
 - p: [31, 32]
-  k: {t: '{', s: '}'}
+  k: '&brc_lr'
   l: [Default]
 - p: [6, 7]
-  k: {t: <, s: '>'}
+  k: '&lt_gt'
   l: [Default]
 - p: [18, 19]
-  k: {t: '-', s: _}
+  k: '&minus_und'
   l: [Default]
 - p: [30, 31]
-  k: {t: +, s: '='}
+  k: '&plus_eq'
   l: [Default]
 - p: [33, 34]
-  k: {t: \, s: '|'}
+  k: '&bslh_pipe'
   l: [Default]
 - p: [0, 1]
   k: ESC

@@ -19,7 +19,7 @@
  #error "KEYS_L not defined"
 #endif
 #ifndef ARROWS
- #define ARROWS LT2 LM3 LM2 LM1
+ #define ARROWS LT2 LM3 LM2 LM1 LT3 LT1 LT4 LM4
 
 #endif
 
@@ -43,13 +43,21 @@
                 bindings = <BINDING1>, <BINDING2>;)
 
 // Tap: left parenthesis | Shft + tap: right parenthesis.
-SIMPLE_MORPH(par_lr, SFT, &kp LPAR, &kp RPAR)
-SIMPLE_MORPH(bkt_lr, SFT, &kp LBKT, &kp RBKT)
-SIMPLE_MORPH(brc_lr, SFT, &kp LBRC, &kp RBRC)
-SIMPLE_MORPH(lt_gt, SFT, &kp LT, &kp GT)
-SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
-SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
-SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
+// SIMPLE_MORPH(par_lr, SFT, &kp LPAR, &kp RPAR)
+// SIMPLE_MORPH(bkt_lr, SFT, &kp LBKT, &kp RBKT)
+// SIMPLE_MORPH(brc_lr, SFT, &kp LBRC, &kp RBRC)
+// SIMPLE_MORPH(lt_gt, SFT, &kp LT, &kp GT)
+// SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
+// SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
+// SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
+#define SYMBOL_COMBO(name,a,b) ZMK_HOLD_TAP(name, flavor = "balanced"; bindings = <LPAR RPAR>;)
+SYMBOL_COMBO(par_lr, &kp LPAR, &kp RPAR)
+SYMBOL_COMBO(bkt_lr, &kp LBKT, &kp RBKT)
+SYMBOL_COMBO(brc_lr, &kp LBRC, &kp RBRC)
+SYMBOL_COMBO(lt_gt, &kp LT, &kp GT)
+SYMBOL_COMBO(minus_und, &kp MINUS, &kp UNDERSCORE)
+SYMBOL_COMBO(plus_eq, &kp PLUS, &kp EQUAL)
+SYMBOL_COMBO(bslh_pipe, &kp BSLH, &kp PIPE)
 
 #define L_DEF 0
 #ifndef L_LOW
@@ -148,18 +156,19 @@ ZMK_HOLD_TAP(hmr,
             bindings = <&none>, <&kt LSHFT>, <&kt_off LSHFT>;
             ignored-key-positions = <ARROWS LM5>; // ignore arrows
         };
+        cswap: cswap {
+            compatible = "zmk,behavior-tri-state";    
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
+        };
         swap: swapper {
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
             ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
         };
-        cswap: cswap {
-            compatible = "zmk,behavior-tri-state";
-            #binding-cells = <0>;
-            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
-            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
-        };
+        
         // shift on hold, tap for caps word
         caps: mod_tap {
             compatible = "zmk,behavior-hold-tap";
@@ -188,9 +197,9 @@ ZMK_BASE_LAYER(Default,
 )
 ZMK_BASE_LAYER(Lower,
 &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    ,
-&cswap      &kp N1      &kp N2       &kp N3       &kp N4       &kp N5           ,
+&cswap      &kp N1       &kp N2       &kp N3       &kp N4       &kp N5           ,
 &kp GRAVE   &kp EXCL     &kp AT       &kp HASH     &kp DOLLAR   &kp PRCNT       ,
-&trans      &trans       &trans       &trans       &trans       &kp LC(Z)       , &trans,
+&trans      &trans       &trans       &kp LC(C)    &trans       &kp LC(Z)       , &trans,
                                       &trans,      &trans       &trans            &trans,
 
          &trans    &trans    &trans    &trans    &trans    &trans   ,
@@ -205,7 +214,7 @@ ZMK_BASE_LAYER(Raise,
 &trans  &trans &trans &trans &trans &trans,
 &trans  &trans &trans &trans &trans &trans,
 &trans  &trans &trans &trans &trans &trans, &trans,
-                      &trans,&trans &trans &trans,
+                      &trans,&trans &kp DEL &trans,
 
         &trans  &trans  &trans  &trans   &trans  &trans,
         &kp F7  &kp F8  &kp F9  &kp F12  &trans  &trans,
@@ -213,7 +222,6 @@ ZMK_BASE_LAYER(Raise,
 &trans, &kp F1  &kp F2  &kp F3  &kp F10  &trans  &trans,
 &trans  &trans  &trans,  &trans
 )
-
 ZMK_BASE_LAYER(Nav,
 &bootloader  &trans    &trans    &trans    &trans     &trans          ,
 &swap        &kp PG_UP &kp HOME  &kp UP    &kp END    &kp RET         ,
