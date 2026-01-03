@@ -77,13 +77,18 @@ ZMK_COMBO(cut,   &kp LC(X),  LB3 LB1, L_DEF L_NAV)
 ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
 ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
 
+ZMK_COMBO(reload, &kp LC(R), LM1 LT1,L_DEF L_NAV)
 
 ZMK_COMBO(lpar,  &par_lr  ,  RT1 RT2,L_DEF)
 ZMK_COMBO(lbkt,  &bkt_lr  ,  RM1 RM2,L_DEF)
 ZMK_COMBO(lbrc,  &brc_lr  ,  RB1 RB2,L_DEF)
 ZMK_COMBO(lt,    &lt_gt,     RT0 RT1,L_DEF)
-ZMK_COMBO(minus, &minus_und, RM0 RM1,L_DEF)
-ZMK_COMBO(plus,  &plus_eq,   RB0 RB1,L_DEF)
+
+ZMK_COMBO(minus, &minus_und, RM2 RM3,L_DEF)
+ZMK_COMBO(plus,  &plus_eq,   RB2 RB3,L_DEF)
+ZMK_COMBO(und, &kp UNDERSCORE, RM0 RM1,L_DEF)
+ZMK_COMBO(eq,  &kp EQUAL,   RB0 RB1,L_DEF)
+
 ZMK_COMBO(bslh,  &bslh_pipe, RB3 RB4,L_DEF)
 
 
