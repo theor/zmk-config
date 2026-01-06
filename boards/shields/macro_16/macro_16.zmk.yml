@@ -1,0 +1,13 @@
+file_format: "1"
+id: macro_16
+name: Macro 16 Shield
+type: shield
+url: https://github.com/theor/macro_16/
+requires: [pro_micro]
+# exposes: [i2c_oled]
+features:
+  - keys
+  # - display
+# siblings:
+  # - corne_left
+  # - corne_right

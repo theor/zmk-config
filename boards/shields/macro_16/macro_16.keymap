@@ -1,0 +1,42 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+#define L_DEF 0
+#ifndef L_F1
+  #define L_F1 1
+#endif
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer { // Layer 0
+            // -------------------------------------
+            // |     Z     |     M     |     K     |
+            // |     A     |     B     |     C     |
+            // |     D     |     E     |     F     |
+            bindings = <
+                &kp N7      &kp N8     &kp N9    &kp KP_DIVIDE
+                &kp N4      &kp N5     &kp N6    &kp KP_MULTIPLY
+                &kp N1      &kp N2     &kp N3    &kp MINUS
+                &lt L_F1 N0 &kp KP_DOT &kp ENTER &kp PLUS
+            >;
+        };
+        f1_layer {
+            bindings = <
+            &none &none &none &bootloader
+            &none &none &none &none
+            &none &none &none &none
+            &none &none &none &none
+            >;
+        };
+
+        extra1 {
+            status = "reserved";
+        };
+
+        extra2 {
+            status = "reserved";
+        };
+    };
+ };

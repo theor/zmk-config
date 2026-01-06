@@ -1,0 +1,3 @@
+# No whitespace after the comma or in your keyboard name!
+config SHIELD_MACRO_16
+    def_bool $(shields_list_contains,macro_16)
