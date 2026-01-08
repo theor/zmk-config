@@ -7,6 +7,7 @@
 
 #include "zmk-helpers/helper.h"
 
+#include "lily58-rev.h"
 
 #define DEF 0
 #define NAV 1
@@ -17,6 +18,9 @@
 
 #ifndef KEYS_L
  #error "KEYS_L not defined"
+#endif
+#ifndef LB5
+ #error "LB5 not defined"
 #endif
 #ifndef ARROWS
  #define ARROWS LT2 LM3 LM2 LM1 LT3 LT1 LT4 LM4
@@ -47,17 +51,25 @@
 // SIMPLE_MORPH(bkt_lr, SFT, &kp LBKT, &kp RBKT)
 // SIMPLE_MORPH(brc_lr, SFT, &kp LBRC, &kp RBRC)
 // SIMPLE_MORPH(lt_gt, SFT, &kp LT, &kp GT)
-// SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
-// SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
+SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
+SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
 // SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
-#define SYMBOL_COMBO(name,a,b) ZMK_HOLD_TAP(name, flavor = "balanced"; bindings = <LPAR RPAR>;)
-SYMBOL_COMBO(par_lr, &kp LPAR, &kp RPAR)
-SYMBOL_COMBO(bkt_lr, &kp LBKT, &kp RBKT)
-SYMBOL_COMBO(brc_lr, &kp LBRC, &kp RBRC)
-SYMBOL_COMBO(lt_gt, &kp LT, &kp GT)
-SYMBOL_COMBO(minus_und, &kp MINUS, &kp UNDERSCORE)
-SYMBOL_COMBO(plus_eq, &kp PLUS, &kp EQUAL)
-SYMBOL_COMBO(bslh_pipe, &kp BSLH, &kp PIPE)
+
+ZMK_BEHAVIOR(htt, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    bindings = <&kp>, <&kp>;
+)
+
+// #define SYMBOL_COMBO(name,a,b) ZMK_HOLD_TAP(name, flavor = "balanced"; bindings = <LPAR RPAR>;)
+// SYMBOL_COMBO(par_lr, &kp LPAR, &kp RPAR)
+// SYMBOL_COMBO(bkt_lr, &kp LBKT, &kp RBKT)
+// SYMBOL_COMBO(brc_lr, &kp LBRC, &kp RBRC)
+// SYMBOL_COMBO(lt_gt, &kp LT, &kp GT)
+// SYMBOL_COMBO(minus_und, &kp MINUS, &kp UNDERSCORE)
+// SYMBOL_COMBO(plus_eq, &kp PLUS, &kp EQUAL)
+// SYMBOL_COMBO(bslh_pipe, &kp BSLH, &kp PIPE)
 
 #define L_DEF 0
 #ifndef L_LOW
@@ -70,7 +82,7 @@ SYMBOL_COMBO(bslh_pipe, &kp BSLH, &kp PIPE)
   #define L_NAV 3
 #endif
 
-ZMK_COMBO(bootload,   &bootloader,  LH2 LB5, L_DEF)
+ZMK_COMBO(bootload,   &bootloader,  LN5 LN0, L_DEF)
 
 
 ZMK_COMBO(cut,   &kp LC(X),  LB3 LB1, L_DEF L_NAV)
@@ -79,18 +91,18 @@ ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
 
 ZMK_COMBO(reload, &kp LC(R), LM1 LT1,L_DEF L_NAV)
 
-ZMK_COMBO(lpar,  &par_lr  ,  RT1 RT2,L_DEF)
-ZMK_COMBO(lbkt,  &bkt_lr  ,  RM1 RM2,L_DEF)
-ZMK_COMBO(lbrc,  &brc_lr  ,  RB1 RB2,L_DEF)
-ZMK_COMBO(lt,    &lt_gt,     RT0 RT1,L_DEF)
+ZMK_COMBO(lpar,  &htt RPAR LPAR,  RT1 RT2,L_DEF)
+ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RM1 RM2,L_DEF)
+ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB1 RB2,L_DEF)
+ZMK_COMBO(lt,    &htt GT LT,     RT0 RT1,L_DEF)
 
 ZMK_COMBO(minus, &minus_und, RM2 RM3,L_DEF)
 ZMK_COMBO(plus,  &plus_eq,   RB2 RB3,L_DEF)
 ZMK_COMBO(und, &kp UNDERSCORE, RM0 RM1,L_DEF)
 ZMK_COMBO(eq,  &kp EQUAL,   RB0 RB1,L_DEF)
 
-ZMK_COMBO(bslh,  &bslh_pipe, RB3 RB4,L_DEF)
-
+ZMK_COMBO(bslh,  &htt PIPE BSLH, RB3 RB4,L_DEF)
+ZMK_COMBO(ctrlf,  &kp LC(F), LM1 LM0,L_DEF)
 
 
 // ZMK_COMBO(lpar, &kp LPAR , RT1 RT2)
@@ -121,6 +133,17 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-key-positions = <KEYS_L THUMBS>;
     hold-trigger-on-release;
     bindings = <&kp>, <&kp>;
+)
+
+ZMK_BEHAVIOR(shift_shift, macro,
+    wait-ms = <100>;
+    tap-ms = <5>;
+    bindings = <&kp LSHFT &kp LSHFT>;
+)
+
+ZMK_BEHAVIOR(capsDance, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&caps_word>, <&shift_shift>;
 )
 
 #ifndef ZMK_BASE_LAYER
@@ -175,14 +198,14 @@ ZMK_HOLD_TAP(hmr,
         };
         
         // shift on hold, tap for caps word
-        caps: mod_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&caps_word>;
-            display-name = "Mod-Tap";
-        };
+        // caps: mod_tap {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     flavor = "hold-preferred";
+        //     tapping-term-ms = <200>;
+        //     bindings = <&kp>, <&caps_word>;
+        //     display-name = "Mod-Tap";
+        // };
     };
 };
 
@@ -190,7 +213,7 @@ ZMK_BASE_LAYER(Default,
 &kp ESC       &kp N1      &kp N2        &kp N3        &kp N4       &kp N5, 
 &kp TAB       &kp Q       &kp W         &kp E         &kp R        &kp T,
 &kp LCTRL     &hml LGUI A &hml LALT S   &hml LSHFT D  &hml LCTRL F &kp G,
-&caps LSHFT 0 &kp Z       &kp X         &kp C         &kp V        &kp B,          &kp LBKT,
+&capsDance    &kp Z       &kp X         &kp C         &kp V        &kp B,          &kp LBKT,
                                         &kp LGUI,     &kp DEL     &lt L_LOW BSPC   &lt L_NAV SPACE,
 
               &kp N6      &kp N7        &kp N8        &kp N9       &kp N0          &kp GRAVE,
@@ -228,7 +251,7 @@ ZMK_BASE_LAYER(Raise,
 &trans  &trans  &trans,  &trans
 )
 ZMK_BASE_LAYER(Nav,
-&bootloader  &trans    &trans    &trans    &trans     &trans          ,
+&trans       &trans    &trans    &trans    &trans     &trans          ,
 &swap        &kp PG_UP &kp HOME  &kp UP    &kp END    &kp RET         ,
 &ctrl_h      &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT  &kp BSPC        ,
 &shift_h     &trans    &kp BSPC  &trans    &trans     &kp DEL,  &trans,

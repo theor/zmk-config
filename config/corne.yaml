@@ -14,18 +14,7 @@ layers:
     - {t: L, h: LALT}
     - {t: ;, h: LGUI}
     - ''''
-  - - {t: '&caps_word', h: LSHFT}
-    - Z
-    - X
-    - C
-    - V
-    - B
-    - N
-    - M
-    - ','
-    - .
-    - /
-    - RSHFT
+  - ['&capsDance', Z, X, C, V, B, N, M, ',', ., /, RSHFT]
   - - DEL
     - {t: BSPC, h: Lower}
     - {t: SPACE, h: Nav}
@@ -151,39 +140,50 @@ layers:
     - '0'
     - .
 combos:
-- p: [36, 24]
+- p: [0, 5]
   k: '&bootloader'
-  l: [Default]
-- p: [26, 28]
+- p: [38, 40]
   k: Ctl+X
   l: [Default, Nav]
-- p: [26, 27]
+- p: [38, 39]
   k: Ctl+C
   l: [Default, Nav]
-- p: [27, 28]
+- p: [39, 40]
   k: Ctl+V
   l: [Default, Nav]
-- p: [7, 8]
-  k: '&par_lr'
-  l: [Default]
+- p: [28, 16]
+  k: Ctl+R
+  l: [Default, Nav]
 - p: [19, 20]
-  k: '&bkt_lr'
+  k: {t: (, h: )}
   l: [Default]
 - p: [31, 32]
-  k: '&brc_lr'
+  k: {t: '[', h: ']'}
   l: [Default]
-- p: [6, 7]
-  k: '&lt_gt'
+- p: [45, 46]
+  k: {t: '{', h: '}'}
   l: [Default]
 - p: [18, 19]
-  k: '&minus_und'
+  k: {t: <, h: '>'}
+  l: [Default]
+- p: [32, 33]
+  k: {t: '-', s: _}
+  l: [Default]
+- p: [46, 47]
+  k: {t: +, s: '='}
   l: [Default]
 - p: [30, 31]
-  k: '&plus_eq'
+  k: _
   l: [Default]
-- p: [33, 34]
-  k: '&bslh_pipe'
+- p: [44, 45]
+  k: '='
   l: [Default]
-- p: [0, 1]
+- p: [47, 48]
+  k: {t: \, h: '|'}
+  l: [Default]
+- p: [28, 29]
+  k: Ctl+F
+  l: [Default]
+- p: [12, 13]
   k: ESC
   l: [Default]
