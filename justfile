@@ -2,10 +2,12 @@ set shell := ["powershell", "-c"]
 set working-directory := '../zmk/app'
 alias b := build
 alias bl := build_left
+alias blc := build_left_central
 alias br := build_right
 alias bd := build_dongle
 alias fd := flash_dongle
 alias fl := flash_left
+alias flc := flash_left_central
 alias fr := flash_right
 alias r := reset
 
@@ -25,7 +27,14 @@ build_half side:
     west build {{p_opt}} -d  build/lily{{side}} -b nice_nano_v2  {{p_snippet}} -- -DSHIELD="lily58_{{side}}" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}} -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     cp build/lily{{side}}/zephyr/zmk.uf2 build/lily58_{{side}}.uf2
 
+build_half_central side:
+    pwd
+    ../.venv\Scripts\Activate.ps1; \
+    west build {{p_opt}} -d  build/lily{{side}}_central -b nice_nano_v2  {{p_snippet}} -- -DSHIELD="lily58_{{side}}" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}} -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+    cp build/lily{{side}}_central/zephyr/zmk.uf2 build/lily58_{{side}}_central.uf2
+
 build_left: (build_half "left")
+build_left_central: (build_half_central "left")
 build_right: (build_half "right")
 
 build: build_left build_right (build_dongle)
@@ -34,6 +43,7 @@ flash side:
     cp build/lily58_{{side}}.uf2 F:\
 flash_dongle: (flash "dongle")
 flash_left: (flash "left")
+flash_left_central: (flash "left_central")
 flash_right: (flash "right")
 
 reset:
