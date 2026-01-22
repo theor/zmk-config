@@ -1,5 +1,4 @@
 set shell := ["powershell", "-c"]
-set working-directory := '../zmk/app'
 alias b := build
 alias bl := build_left
 alias blc := build_left_central
@@ -15,6 +14,17 @@ pristine := 'n'
 studio := 'n'
 p_opt := if pristine == 'y' { "-p" } else { "" }
 p_snippet := if studio == 'y' { " -S studio-rpc-usb-uart " } else { " -S zmk-usb-logging" }
+
+
+draw:
+    cd {{justfile_dir()}} ;\
+    .venv\Scripts\Activate.ps1; \
+    keymap -c config.yaml parse -c 12 -z .\config\lily58.keymap -o .\config\lily58.yaml; \
+    keymap -c config.yaml draw .\config\lily58.yaml -o .\lily58-keymap.svg
+
+set working-directory := '../zmk/app'
+
+
 build_dongle:
     pwd
     ../.venv\Scripts\Activate.ps1; \
