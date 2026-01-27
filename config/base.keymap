@@ -9,12 +9,6 @@
 
 #include "lily58-rev.h"
 
-#define DEF 0
-#define NAV 1
-#define FN 2
-#define NUM 3
-#define SYS 4
-#define MOUSE 5
 
 #ifndef KEYS_L
  #error "KEYS_L not defined"
@@ -81,6 +75,11 @@ ZMK_BEHAVIOR(htt, hold_tap,
 #ifndef L_NAV
   #define L_NAV 3
 #endif
+#ifndef L_MOUSE
+  #define L_MOUSE 4
+#endif
+
+
 
 ZMK_COMBO(bootload,   &bootloader,  LN5 LN0, L_DEF)
 
@@ -90,10 +89,14 @@ ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
 ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
 
 ZMK_COMBO(reload, &kp LC(R), LM1 LT1,L_DEF L_NAV)
+ZMK_COMBO(reload, &kp LC(S), LM1 LM3,L_DEF)
 
-ZMK_COMBO(lpar,  &htt RPAR LPAR,  RT1 RT2,L_DEF)
-ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RM1 RM2,L_DEF)
-ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB1 RB2,L_DEF)
+// ZMK_COMBO(lpar,  &htt RPAR LPAR,  RT1 RT2,L_DEF)
+// ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RM1 RM2,L_DEF)
+// ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB1 RB2,L_DEF)
+ZMK_COMBO(lpar,  &htt RPAR LPAR,  RB1 RM1,L_DEF)
+ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RB2 RM2,L_DEF)
+ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB3 RM3,L_DEF)
 ZMK_COMBO(lt,    &htt GT LT,     RT0 RT1,L_DEF)
 
 // ZMK_COMBO(minus, &minus_und, RM2 RM3,L_DEF)
@@ -151,8 +154,26 @@ ZMK_BEHAVIOR(capsDance, tap_dance,
       ZMK_LAYER(name, LN RN LT RT LM RM LB LS  RS RB LLH LH RH RRH)
 #endif
 
+// #define ZMK_MOKT(NAME, KEY) \
+// ZMK_TRI_STATE(NAME, \
+//     bindings = <&kt_off KEY>, <&kt KEY>, <&kt_off KEY>; \
+//     ignored-key-positions = <LB5 ARROWS RM1 RM2 RM3 RM4>; \
+// )
+
+// ZMK_MOKT(mokt_ctrl, LCTRL)
+// ZMK_MOKT(mokt_shft, LSHFT)
+// ZMK_MOKT(mokt_alt, LALT)
+// ZMK_MOKT(mokt_gui, LGUI)
 
 / {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        tri_layer {
+            if-layers = <L_LOW L_RAISE>;
+            then-layer = <L_MOUSE>;
+        };
+    };
     behaviors {
         kt_on: key_toggle_on_only {
             compatible = "zmk,behavior-key-toggle";
@@ -258,8 +279,23 @@ ZMK_BASE_LAYER(Nav,
                                  &trans,   &trans     &trans    &trans,
 
          &trans  &trans  &trans  &trans  &trans  &trans,
-         &kp N7  &kp N8  &kp N9  &trans  &trans  &trans,
-         &kp N4  &kp N5  &kp N6  &trans  &trans  &trans,
- &trans, &kp N1  &kp N2  &kp N3  &trans  &trans  &trans,
- &trans  &kp N0  &kp DOT,&trans  
+         &trans  &trans  &trans  &trans  &trans  &trans,
+        //  &trans  &mokt_ctrl  &mokt_shft  &mokt_alt  &mokt_gui  &trans,
+         &trans  &kt(LCTRL)  &kt(LSHFT)  &kt(LALT)  &kt(LGUI)  &trans,
+ &trans, &trans  &trans  &trans  &trans  &trans  &trans,
+ &trans  &trans  &trans,&trans  
+)
+
+ZMK_BASE_LAYER(Mouse,
+&trans  &trans &trans         &trans         &trans          &trans,
+&trans  &trans &mkp LCLK      &mmv MOVE_UP   &mkp RCLK       &trans,
+&trans  &trans &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans,
+&trans  &trans &trans         &trans &trans  &trans,         &trans,
+                              &trans,&trans  &trans          &trans,
+
+        &trans  &trans  &trans  &trans   &trans  &trans,
+        &kp N7  &kp N8  &kp N9  &trans   &trans  &trans,
+        &kp N4  &kp N5  &kp N6  &trans   &trans  &trans,
+&trans, &kp N1  &kp N2  &kp N3  &trans   &trans  &trans,
+&trans  &kp N0  &kp DOT,&trans
 )

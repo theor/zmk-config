@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/urob
     - name: englmaxi
       url-base: https://github.com/englmaxi
+    - name: janpfischer
+      url-base: https://github.com/janpfischer
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -22,9 +24,13 @@ manifest:
     - name: zmk-tri-state
       remote: urob
       revision: main
-    - name: zmk-dongle-display
-      remote: englmaxi
-      revision: v0.3 # use 'v0.3' instead of 'main' if you use have pinned zmk to 'v0.3' or below
+    # - name: zmk-dongle-display
+    #   remote: englmaxi
+    #   revision: v0.3 # use 'v0.3' instead of 'main' if you use have pinned zmk to 'v0.3' or below
+      
+    - name: zmk-dongle-screen
+      remote: janpfischer
+      revision: main
   self:
     path: config
     # self:

@@ -89,9 +89,9 @@ layers:
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - '&mkp LCLK'
+    - '&mmv MOVE_UP'
+    - '&mkp RCLK'
     - {t: ▽, type: trans}
     - F7
     - F8
@@ -101,9 +101,9 @@ layers:
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - '&mmv MOVE_LEFT'
+    - '&mmv MOVE_DOWN'
+    - '&mmv MOVE_RIGHT'
     - {t: ▽, type: trans}
     - F4
     - F5
@@ -152,9 +152,9 @@ layers:
     - UP
     - END
     - RET
-    - '7'
-    - '8'
-    - '9'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -164,11 +164,11 @@ layers:
     - DOWN
     - RIGHT
     - BSPC
-    - '4'
-    - '5'
-    - '6'
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - {t: LCTRL, h: toggle}
+    - {t: LSHFT, h: toggle}
+    - {t: LALT, h: toggle}
+    - {t: LGUI, h: toggle}
     - {t: ▽, type: trans}
   - - '&shift_h'
     - {t: ▽, type: trans}
@@ -176,6 +176,65 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - DEL
+    - EP TOG
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {type: held}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  Mouse:
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '&mkp LCLK'
+    - '&mmv MOVE_UP'
+    - '&mkp RCLK'
+    - {t: ▽, type: trans}
+    - '7'
+    - '8'
+    - '9'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - '&mmv MOVE_LEFT'
+    - '&mmv MOVE_DOWN'
+    - '&mmv MOVE_RIGHT'
+    - {t: ▽, type: trans}
+    - '4'
+    - '5'
+    - '6'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+  - - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - '1'
@@ -186,10 +245,10 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
-    - '0'
+    - {t: ▽, type: trans}
+    - {t: '0', type: held}
     - .
     - {t: ▽, type: trans}
 combos:
@@ -211,29 +270,26 @@ combos:
 - p: [28, 16]
   k: Ctl+R
   l: [Default, Nav]
-- p: [19, 20]
+- p: [28, 26]
+  k: Ctl+S
+  l: [Default]
+- p: [45, 31]
   k: {t: (, h: )}
   l: [Default]
-- p: [31, 32]
+- p: [46, 32]
   k: {t: '[', h: ']'}
   l: [Default]
-- p: [45, 46]
+- p: [47, 33]
   k: {t: '{', h: '}'}
   l: [Default]
 - p: [18, 19]
   k: {t: <, h: '>'}
   l: [Default]
-- p: [32, 33]
-  k: {t: '-', s: _}
-  l: [Default]
-- p: [46, 47]
-  k: {t: +, s: '='}
-  l: [Default]
 - p: [30, 31]
-  k: _
+  k: {t: '-', h: _}
   l: [Default]
 - p: [44, 45]
-  k: '='
+  k: {t: +, h: '='}
   l: [Default]
 - p: [47, 48]
   k: {t: \, h: '|'}
