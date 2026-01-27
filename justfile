@@ -28,7 +28,7 @@ set working-directory := '../zmk/app'
 build_dongle:
     pwd
     ../.venv\Scripts\Activate.ps1; \
-    west build {{p_opt}} -d  build/donglenn -b seeeduino_xiao_ble {{p_snippet}} -- -DSHIELD="lily58_dongle dongle_screen" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config;C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-dongle-screen;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}}    
+    west build {{p_opt}} -d  build/donglenn -b xiao_ble {{p_snippet}} -- -DSHIELD="lily58_dongle dongle_screen" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config;C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-dongle-screen;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}}    
     cp build/donglenn/zephyr/zmk.uf2 build/lily58_dongle.uf2
 
 build_half side:

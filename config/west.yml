@@ -6,21 +6,21 @@ manifest:
       url-base: https://github.com/theor
     - name: urob
       url-base: https://github.com/urob
-    - name: englmaxi
-      url-base: https://github.com/englmaxi
+    # - name: englmaxi
+    #   url-base: https://github.com/englmaxi
     - name: janpfischer
       url-base: https://github.com/janpfischer
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
-      # remote: zmkfirmware
-      remote: theor
+      remote: zmkfirmware
+      # remote: theor
       revision: main
       import: app/west.yml
-    - name: zmk-display
-      remote: theor
-      revision: main
+    # - name: zmk-display
+    #   remote: theor
+    #   revision: main
     - name: zmk-tri-state
       remote: urob
       revision: main
@@ -30,7 +30,7 @@ manifest:
       
     - name: zmk-dongle-screen
       remote: janpfischer
-      revision: main
+      revision: upgrade-4.1
   self:
     path: config
     # self:
