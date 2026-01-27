@@ -55,6 +55,12 @@ ZMK_BEHAVIOR(htt, hold_tap,
     quick-tap-ms = <125>;
     bindings = <&kp>, <&kp>;
 )
+ZMK_BEHAVIOR(toggletap, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    bindings = <&kp>, <&kt>;
+)
 
 // #define SYMBOL_COMBO(name,a,b) ZMK_HOLD_TAP(name, flavor = "balanced"; bindings = <LPAR RPAR>;)
 // SYMBOL_COMBO(par_lr, &kp LPAR, &kp RPAR)
@@ -278,10 +284,10 @@ ZMK_BASE_LAYER(Nav,
 &shift_h     &trans    &kp BSPC  &trans    &trans     &kp DEL,  &ext_power EP_TOG,
                                  &trans,   &trans     &trans    &trans,
 
-         &trans  &trans  &trans  &trans  &trans  &trans,
+         &trans  &trans  &trans  &kp F22  &kp F23  &kp F24,
          &trans  &trans  &trans  &trans  &trans  &trans,
         //  &trans  &mokt_ctrl  &mokt_shft  &mokt_alt  &mokt_gui  &trans,
-         &trans  &kt(LCTRL)  &kt(LSHFT)  &kt(LALT)  &kt(LGUI)  &trans,
+         &trans  &toggletap LCTRL LCTRL  &toggletap LSHFT LSHFT  &toggletap LALT LALT  &toggletap LGUI LGUI  &trans,
  &trans, &trans  &trans  &trans  &trans  &trans  &trans,
  &trans  &trans  &trans,&trans  
 )
