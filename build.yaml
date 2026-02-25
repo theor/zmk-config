@@ -29,13 +29,13 @@ include:
   #   cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DZMK_KEYBOARD_NAME=corne_l
   - board: nice_nano//zmk
     shield: lily58_left # nice_view_adapter nice_view
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=lily58_l
+    cmake-args: -DCONFIG_ZMK_STUDIO=n -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=lily58_l
   - board: nice_nano//zmk
     shield: lily58_left # nice_view_adapter nice_view
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DZMK_KEYBOARD_NAME=lily58_l_central
+    cmake-args: -DCONFIG_ZMK_STUDIO=n -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DZMK_KEYBOARD_NAME=lily58_l_central
   - board: nice_nano//zmk
     shield: lily58_right
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=lily58_r
+    cmake-args: -DCONFIG_ZMK_STUDIO=n -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n -DZMK_KEYBOARD_NAME=lily58_r
     # snippet: zmk-usb-logging
   - board: nice_nano//zmk
     shield: settings_reset
