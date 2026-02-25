@@ -44,7 +44,7 @@ include:
     shield: settings_reset
   - board: xiao_ble//zmk
     snippet: studio-rpc-usb-uart
-    shield: lily58_dongle dongle_display
+    shield: lily58_dongle dongle_screen
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DZMK_KEYBOARD_NAME=lily58_dongle
   # - board: xiao_ble//zmk
   #   snippet: studio-rpc-usb-uart
