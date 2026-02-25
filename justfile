@@ -34,13 +34,13 @@ build_dongle:
 build_half side:
     pwd
     ../.venv\Scripts\Activate.ps1; \
-    west build {{p_opt}} -d  build/lily{{side}} -b nice_nano_v2  {{p_snippet}} -- -DSHIELD="lily58_{{side}}" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}} -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
+    west build {{p_opt}} -d  build/lily{{side}} -b nice_nano  {{p_snippet}} -- -DSHIELD="lily58_{{side}}" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}} -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
     cp build/lily{{side}}/zephyr/zmk.uf2 build/lily58_{{side}}.uf2
 
 build_half_central side:
     pwd
     ../.venv\Scripts\Activate.ps1; \
-    west build {{p_opt}} -d  build/lily{{side}}_central -b nice_nano_v2  {{p_snippet}} -- -DSHIELD="lily58_{{side}}" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}} -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+    west build {{p_opt}} -d  build/lily{{side}}_central -b nice_nano  {{p_snippet}} -- -DSHIELD="lily58_{{side}}" -DZMK_CONFIG="C:/Users/theor/zmk-config/config" -DZMK_EXTRA_MODULES="C:/Users/theor/zmk-config/zmk-tri-state;C:/Users/theor/zmk-config/zmk-helpers"  -DCONFIG_ZMK_STUDIO={{studio}} -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
     cp build/lily{{side}}_central/zephyr/zmk.uf2 build/lily58_{{side}}_central.uf2
 
 build_left: (build_half "left")

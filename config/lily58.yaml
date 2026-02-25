@@ -17,9 +17,9 @@ layers:
     - ''''
   - ['&capsDance', Z, X, C, V, B, '[', ']', N, M, ',', .]
   - - /
-    - RSHFT
+    - \
     - LGUI
-    - DEL
+    - {t: DEL, h: Mouse}
     - {t: BSPC, h: Lower}
     - {t: SPACE, h: Nav}
     - RET
@@ -89,9 +89,9 @@ layers:
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - '&mkp LCLK'
-    - '&mmv MOVE_UP'
-    - '&mkp RCLK'
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
+    - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - F7
     - F8
@@ -100,10 +100,10 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
   - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - '&mmv MOVE_LEFT'
-    - '&mmv MOVE_DOWN'
-    - '&mmv MOVE_RIGHT'
+    - {t: LGUI, h: LGUI}
+    - {t: LALT, h: LALT}
+    - {t: LSHFT, h: LSHFT}
+    - {t: LCTRL, h: LCTRL}
     - {t: ▽, type: trans}
     - F4
     - F5
@@ -126,7 +126,7 @@ layers:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - '&LS(LA(F12))'
     - DEL
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -143,18 +143,18 @@ layers:
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - F22
+    - F23
+    - F24
   - - '&swap'
     - PG UP
     - HOME
     - UP
     - END
     - RET
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - {t: (, h: )}
+    - {t: '{', h: '}'}
+    - {t: '[', h: ']'}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
@@ -165,10 +165,10 @@ layers:
     - RIGHT
     - BSPC
     - {t: ▽, type: trans}
-    - {t: LCTRL, h: toggle}
-    - {t: LSHFT, h: toggle}
-    - {t: LALT, h: toggle}
-    - {t: LGUI, h: toggle}
+    - {t: LCTRL, h: LCTRL}
+    - {t: LSHFT, h: LSHFT}
+    - {t: LALT, h: LALT}
+    - {t: LGUI, h: LGUI}
     - {t: ▽, type: trans}
   - - '&shift_h'
     - {t: ▽, type: trans}
@@ -244,11 +244,11 @@ layers:
   - - {t: ▽, type: trans}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
     - {type: held}
     - {t: ▽, type: trans}
     - {t: ▽, type: trans}
-    - {t: '0', type: held}
+    - {t: ▽, type: trans}
+    - '0'
     - .
     - {t: ▽, type: trans}
 combos:
@@ -273,14 +273,14 @@ combos:
 - p: [28, 26]
   k: Ctl+S
   l: [Default]
-- p: [45, 31]
+- p: [28, 31]
   k: {t: (, h: )}
   l: [Default]
-- p: [46, 32]
-  k: {t: '[', h: ']'}
-  l: [Default]
-- p: [47, 33]
+- p: [27, 32]
   k: {t: '{', h: '}'}
+  l: [Default]
+- p: [26, 33]
+  k: {t: '[', h: ']'}
   l: [Default]
 - p: [18, 19]
   k: {t: <, h: '>'}

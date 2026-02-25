@@ -62,6 +62,8 @@ ZMK_BEHAVIOR(toggletap, hold_tap,
     bindings = <&kp>, <&kt>;
 )
 
+#define TTAP(X) &toggletap X X
+
 // #define SYMBOL_COMBO(name,a,b) ZMK_HOLD_TAP(name, flavor = "balanced"; bindings = <LPAR RPAR>;)
 // SYMBOL_COMBO(par_lr, &kp LPAR, &kp RPAR)
 // SYMBOL_COMBO(bkt_lr, &kp LBKT, &kp RBKT)
@@ -72,18 +74,10 @@ ZMK_BEHAVIOR(toggletap, hold_tap,
 // SYMBOL_COMBO(bslh_pipe, &kp BSLH, &kp PIPE)
 
 #define L_DEF 0
-#ifndef L_LOW
-  #define L_LOW 1
-#endif
-#ifndef L_RAISE
-  #define L_RAISE 2
-#endif
-#ifndef L_NAV
-  #define L_NAV 3
-#endif
-#ifndef L_MOUSE
-  #define L_MOUSE 4
-#endif
+#define L_LOW 1
+#define L_RAISE 2
+#define L_NAV 3
+#define L_MOUSE 4
 
 
 
@@ -95,14 +89,18 @@ ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
 ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
 
 ZMK_COMBO(reload, &kp LC(R), LM1 LT1,L_DEF L_NAV)
-ZMK_COMBO(reload, &kp LC(S), LM1 LM3,L_DEF)
+ZMK_COMBO(save, &kp LC(S), LM1 LM3,L_DEF)
 
 // ZMK_COMBO(lpar,  &htt RPAR LPAR,  RT1 RT2,L_DEF)
 // ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RM1 RM2,L_DEF)
 // ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB1 RB2,L_DEF)
-ZMK_COMBO(lpar,  &htt RPAR LPAR,  RB1 RM1,L_DEF)
-ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RB2 RM2,L_DEF)
-ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB3 RM3,L_DEF)
+// ZMK_COMBO(lpar,  &htt RPAR LPAR,  RB1 RM1,L_DEF)
+// ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RB2 RM2,L_DEF)
+// ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB3 RM3,L_DEF)
+ZMK_COMBO(lpar,  &htt RPAR LPAR,  LM1 RM1,L_DEF)
+ZMK_COMBO(lbrc,  &htt RBRC LBRC,  LM2 RM2,L_DEF)
+ZMK_COMBO(lbkt,  &htt RBKT LBKT,  LM3 RM3,L_DEF)
+
 ZMK_COMBO(lt,    &htt GT LT,     RT0 RT1,L_DEF)
 
 // ZMK_COMBO(minus, &minus_und, RM2 RM3,L_DEF)
@@ -172,14 +170,14 @@ ZMK_BEHAVIOR(capsDance, tap_dance,
 // ZMK_MOKT(mokt_gui, LGUI)
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
 
-        tri_layer {
-            if-layers = <L_LOW L_RAISE>;
-            then-layer = <L_MOUSE>;
-        };
-    };
+    //     tri_layer {
+    //         if-layers = <L_LOW L_RAISE>;
+    //         then-layer = <L_MOUSE>;
+    //     };
+    // };
     behaviors {
         kt_on: key_toggle_on_only {
             compatible = "zmk,behavior-key-toggle";
@@ -241,12 +239,12 @@ ZMK_BASE_LAYER(Default,
 &kp TAB       &kp Q       &kp W         &kp E         &kp R        &kp T,
 &kp LCTRL     &hml LGUI A &hml LALT S   &hml LSHFT D  &hml LCTRL F &kp G,
 &capsDance    &kp Z       &kp X         &kp C         &kp V        &kp B,          &kp LBKT,
-                                        &kp LGUI,     &kp DEL     &lt L_LOW BSPC   &lt L_NAV SPACE,
+                                        &kp LGUI,     &lt L_MOUSE DEL     &lt L_LOW BSPC   &lt L_NAV SPACE,
 
               &kp N6      &kp N7        &kp N8        &kp N9       &kp N0          &kp GRAVE,
               &kp Y       &kp U         &kp I         &kp O        &kp P           &kp MINUS,
               &kp H       &hmr LCTRL J  &hmr LSHFT K  &hmr LALT L  &hmr LGUI SEMI  &kp SQT,
-&kp RBKT,     &kp N       &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp RSHFT,
+&kp RBKT,     &kp N       &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp BSLH,
 &kp RET       &lt L_RAISE BSPC  &kp INS,&kp PSCRN 
 
 )
@@ -265,39 +263,41 @@ ZMK_BASE_LAYER(Lower,
 )
 
 ZMK_BASE_LAYER(Raise,
-&trans  &trans &trans         &trans         &trans          &trans,
-&trans  &trans &mkp LCLK      &mmv MOVE_UP   &mkp RCLK       &trans,
-&trans  &trans &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans,
-&trans  &trans &trans         &trans &trans  &trans,         &trans,
-                              &trans,&trans  &kp DEL         &trans,
+&trans  &trans       &trans       &trans        &trans        &trans,
+&trans  &trans       &trans       &trans        &trans        &trans,
+&trans  TTAP(LGUI)   TTAP(LALT)   TTAP(LSHFT)   TTAP(LCTRL)  &trans,
+&trans  &trans       &trans       &trans        &trans        &trans,  &trans,
+                     &trans,      &trans        &kp DEL       &trans,
 
         &trans  &trans  &trans  &trans   &trans  &trans,
         &kp F7  &kp F8  &kp F9  &kp F12  &trans  &trans,
         &kp F4  &kp F5  &kp F6  &kp F11  &trans  &trans,
 &trans, &kp F1  &kp F2  &kp F3  &kp F10  &trans  &trans,
-&trans  &trans  &trans,  &trans
+&trans  &trans  &trans, &trans
 )
+
+
 ZMK_BASE_LAYER(Nav,
 &trans       &trans    &trans    &trans    &trans     &trans          ,
 &swap        &kp PG_UP &kp HOME  &kp UP    &kp END    &kp RET         ,
 &ctrl_h      &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT  &kp BSPC        ,
-&shift_h     &trans    &kp BSPC  &trans    &trans     &kp DEL,  &ext_power EP_TOG,
+&shift_h     &trans    &kp BSPC  &trans    &trans     &kp LS(LA(F12)),  &ext_power EP_TOG,
                                  &trans,   &trans     &trans    &trans,
 
-         &trans  &trans  &trans  &kp F22  &kp F23  &kp F24,
-         &trans  &trans  &trans  &trans  &trans  &trans,
+         &trans  &trans        &trans        &kp F22      &kp F23      &kp F24,
+         &htt RPAR LPAR &htt RBRC LBRC &htt RBKT LBKT  &trans       &trans       &trans,
         //  &trans  &mokt_ctrl  &mokt_shft  &mokt_alt  &mokt_gui  &trans,
-         &trans  &toggletap LCTRL LCTRL  &toggletap LSHFT LSHFT  &toggletap LALT LALT  &toggletap LGUI LGUI  &trans,
- &trans, &trans  &trans  &trans  &trans  &trans  &trans,
- &trans  &trans  &trans,&trans  
+         &trans  TTAP(LCTRL)   TTAP(LSHFT)   TTAP(LALT)   TTAP(LGUI)  &trans,
+ &trans, &trans  &trans        &trans        &trans       &trans       &trans,
+ &trans  &trans  &trans,       &trans  
 )
 
 ZMK_BASE_LAYER(Mouse,
 &trans  &trans &trans         &trans         &trans          &trans,
 &trans  &trans &mkp LCLK      &mmv MOVE_UP   &mkp RCLK       &trans,
 &trans  &trans &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans,
-&trans  &trans &trans         &trans &trans  &trans,         &trans,
-                              &trans,&trans  &trans          &trans,
+&trans  &trans &trans         &trans         &trans          &trans,  &trans,
+                              &trans,        &trans          &trans   &trans,
 
         &trans  &trans  &trans  &trans   &trans  &trans,
         &kp N7  &kp N8  &kp N9  &trans   &trans  &trans,
