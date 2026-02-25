@@ -42,7 +42,7 @@ include:
     # snippet: zmk-usb-logging
   - board: nice_nano//zmk
     shield: settings_reset
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble//zmk
     snippet: studio-rpc-usb-uart
     shield: lily58_dongle dongle_display
     cmake-args: -DCONFIG_ZMK_STUDIO=y -DZMK_KEYBOARD_NAME=lily58_dongle
