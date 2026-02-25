@@ -1,12 +1,3 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
-#include "zmk-helpers/key-labels/42.h"
-
-#include <behaviors.dtsi>
 /*                                      42 KEY MATRIX / LAYOUT MAPPING
 
   ╭────────────────────────┬────────────────────────╮ ╭─────────────────────────┬─────────────────────────╮
@@ -16,34 +7,55 @@
   ╰───────────╮ 36  37  38 │ 39  40  41 ╭───────────╯ ╰───────────╮ LH2 LH1 LH0 │ RH0 RH1 RH2 ╭───────────╯
               ╰────────────┴────────────╯                         ╰─────────────┴─────────────╯             */
 
+#pragma once
 
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5
-#define THUMBS LH2 LH1 LH0 RH0 RH1 RH2 // Thumbs on 36+ keys.
+#define LT0  5  // left-top row
+#define LT1  4
+#define LT2  3
+#define LT3  2
+#define LT4  1
+#define LT5  0
 
+#define RT0  6  // right-top row
+#define RT1  7
+#define RT2  8
+#define RT3  9
+#define RT4 10
+#define RT5 11
 
-  #define ZMK_BASE_LAYER(name, LN, LT, LM, LB, LS, LLH, LH, RN,RT, RM, RS, RB, RH, RRH) \
-      ZMK_LAYER(name, LT RT LM RM LB RB LH RH)
+#define LM0 17  // left-middle row
+#define LM1 16
+#define LM2 15
+#define LM3 14
+#define LM4 13
+#define LM5 12
 
-// #define L_LOW 1
-// #define L_RAISE 2
-// #define L_NAV 3
+#define RM0 18  // right-middle row
+#define RM1 19
+#define RM2 20
+#define RM3 21
+#define RM4 22
+#define RM5 23
 
+#define LB0 29  // left-bottom row
+#define LB1 28
+#define LB2 27
+#define LB3 26
+#define LB4 25
+#define LB5 24
 
-// / {
-    // chosen { zmk,physical-layout = &foostan_corne_6col_layout; };
-    // conditional_layers {
-    //     compatible = "zmk,conditional-layers";
+#define RB0 30  // right-bottom row
+#define RB1 31
+#define RB2 32
+#define RB3 33
+#define RB4 34
+#define RB5 35
 
-    //     tri_layer {
-    //         if-layers = <1 2>;
-    //         then-layer = <3>;
-    //     };
-    // };
+#define LH0 38  // left thumb keys
+#define LH1 37
+#define LH2 36
 
-// };
-
-#include "base.keymap"
-
-ZMK_COMBO(esc , &kp ESC , LT5 LT4, L_DEF)
+#define RH0 39  // right thumb keys
+#define RH1 40
+#define RH2 41
 

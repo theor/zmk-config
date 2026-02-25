@@ -1,0 +1,307 @@
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include "zmk-helpers/helper.h"
+
+#include "lily58-rev.h"
+
+
+#ifndef KEYS_L
+ #error "KEYS_L not defined"
+#endif
+#ifndef LB5
+ #error "LB5 not defined"
+#endif
+#ifndef ARROWS
+ #define ARROWS LT2 LM3 LM2 LM1 LT3 LT1 LT4 LM4
+
+#endif
+
+
+// #define KEYS_L LT0 LT1 LT2 LT3 LT4 LT5 LM0 LM1 LM2 LM3 LM4 LM5 LB0 LB1 LB2 LB3 LB4 LB5  // left hand
+// #define KEYS_R RT0 RT1 RT2 RT3 RT4 RT5 RM0 RM1 RM2 RM3 RM4 RM5 RB0 RB1 RB2 RB3 RB4 RB5  // right hand
+// #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2    
+
+
+#define COMBO_TERM_FAST 18
+#define COMBO_TERM_SLOW 30
+
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
+
+
+
+// Define mod-morph with a *single* mod trigger for less repetition.
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
+  ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
+                bindings = <BINDING1>, <BINDING2>;)
+
+// Tap: left parenthesis | Shft + tap: right parenthesis.
+// SIMPLE_MORPH(par_lr, SFT, &kp LPAR, &kp RPAR)
+// SIMPLE_MORPH(bkt_lr, SFT, &kp LBKT, &kp RBKT)
+// SIMPLE_MORPH(brc_lr, SFT, &kp LBRC, &kp RBRC)
+// SIMPLE_MORPH(lt_gt, SFT, &kp LT, &kp GT)
+// SIMPLE_MORPH(minus_und, SFT, &kp MINUS, &kp UNDERSCORE)
+// SIMPLE_MORPH(plus_eq, SFT, &kp PLUS, &kp EQUAL)
+// SIMPLE_MORPH(bslh_pipe, SFT, &kp BSLH, &kp PIPE)
+
+ZMK_BEHAVIOR(htt, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    bindings = <&kp>, <&kp>;
+)
+ZMK_BEHAVIOR(toggletap, hold_tap,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    bindings = <&kp>, <&kt>;
+)
+
+#define TTAP(X) &toggletap X X
+
+// #define SYMBOL_COMBO(name,a,b) ZMK_HOLD_TAP(name, flavor = "balanced"; bindings = <LPAR RPAR>;)
+// SYMBOL_COMBO(par_lr, &kp LPAR, &kp RPAR)
+// SYMBOL_COMBO(bkt_lr, &kp LBKT, &kp RBKT)
+// SYMBOL_COMBO(brc_lr, &kp LBRC, &kp RBRC)
+// SYMBOL_COMBO(lt_gt, &kp LT, &kp GT)
+// SYMBOL_COMBO(minus_und, &kp MINUS, &kp UNDERSCORE)
+// SYMBOL_COMBO(plus_eq, &kp PLUS, &kp EQUAL)
+// SYMBOL_COMBO(bslh_pipe, &kp BSLH, &kp PIPE)
+
+#define L_DEF 0
+#define L_LOW 1
+#define L_RAISE 2
+#define L_NAV 3
+#define L_MOUSE 4
+
+
+
+ZMK_COMBO(bootload,   &bootloader,  LN5 LN0, L_DEF)
+
+
+ZMK_COMBO(cut,   &kp LC(X),  LB3 LB1, L_DEF L_NAV)
+ZMK_COMBO(copy,  &kp LC(C),  LB3 LB2, L_DEF L_NAV)
+ZMK_COMBO(paste, &kp LC(V),  LB2 LB1, L_DEF L_NAV)
+
+ZMK_COMBO(reload, &kp LC(R), LM1 LT1,L_DEF L_NAV)
+ZMK_COMBO(save, &kp LC(S), LM1 LM3,L_DEF)
+
+// ZMK_COMBO(lpar,  &htt RPAR LPAR,  RT1 RT2,L_DEF)
+// ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RM1 RM2,L_DEF)
+// ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB1 RB2,L_DEF)
+// ZMK_COMBO(lpar,  &htt RPAR LPAR,  RB1 RM1,L_DEF)
+// ZMK_COMBO(lbkt,  &htt RBKT LBKT,  RB2 RM2,L_DEF)
+// ZMK_COMBO(lbrc,  &htt RBRC LBRC,  RB3 RM3,L_DEF)
+ZMK_COMBO(lpar,  &htt RPAR LPAR,  LM1 RM1,L_DEF)
+ZMK_COMBO(lbrc,  &htt RBRC LBRC,  LM2 RM2,L_DEF)
+ZMK_COMBO(lbkt,  &htt RBKT LBKT,  LM3 RM3,L_DEF)
+
+ZMK_COMBO(lt,    &htt GT LT,     RT0 RT1,L_DEF)
+
+// ZMK_COMBO(minus, &minus_und, RM2 RM3,L_DEF)
+// ZMK_COMBO(plus,  &plus_eq,   RB2 RB3,L_DEF)
+ZMK_COMBO(und, &htt UNDERSCORE MINUS, RM0 RM1,L_DEF)
+ZMK_COMBO(eq,  &htt EQUAL PLUS,   RB0 RB1,L_DEF)
+
+ZMK_COMBO(bslh,  &htt PIPE BSLH, RB3 RB4,L_DEF)
+ZMK_COMBO(ctrlf,  &kp LC(F), LM1 LM0,L_DEF)
+
+
+// ZMK_COMBO(lpar, &kp LPAR , RT1 RT2)
+// ZMK_COMBO(rpar, &kp RPAR , RT2 RT3)
+// ZMK_COMBO(lbkt, &kp LBKT , RM1 RM2)
+// ZMK_COMBO(rbkt, &kp RBKT , RM2 RM3)
+// ZMK_COMBO(lbrc, &kp LBRC , RB1 RB2)
+// ZMK_COMBO(rbrc, &kp RBRC , RB2 RB3)
+// ZMK_COMBO(bslh, &kp BSLH , RB3 RB4)
+// ZMK_COMBO(lt, &kp LT , RT0 RT1)
+// ZMK_COMBO(gt, &kp GT , RM0 RM1)
+
+
+
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    require-prior-idle-ms = <150>;
+    hold-trigger-key-positions = <KEYS_R THUMBS>;
+    hold-trigger-on-release;
+    bindings = <&kp>, <&kp>;
+)
+
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    require-prior-idle-ms = <150>;
+    hold-trigger-key-positions = <KEYS_L THUMBS>;
+    hold-trigger-on-release;
+    bindings = <&kp>, <&kp>;
+)
+
+ZMK_BEHAVIOR(shift_shift, macro,
+    wait-ms = <100>;
+    tap-ms = <5>;
+    bindings = <&kp LSHFT &kp LSHFT>;
+)
+
+ZMK_BEHAVIOR(capsDance, tap_dance,
+    tapping-term-ms = <200>;
+    bindings = <&caps_word>, <&shift_shift>;
+)
+
+#ifndef ZMK_BASE_LAYER
+  #define ZMK_BASE_LAYER(name, LN, LT, LM, LB, LS, LLH, LH, RN,RT, RM, RS, RB, RH, RRH)                 \
+      ZMK_LAYER(name, LN RN LT RT LM RM LB LS  RS RB LLH LH RH RRH)
+#endif
+
+// #define ZMK_MOKT(NAME, KEY) \
+// ZMK_TRI_STATE(NAME, \
+//     bindings = <&kt_off KEY>, <&kt KEY>, <&kt_off KEY>; \
+//     ignored-key-positions = <LB5 ARROWS RM1 RM2 RM3 RM4>; \
+// )
+
+// ZMK_MOKT(mokt_ctrl, LCTRL)
+// ZMK_MOKT(mokt_shft, LSHFT)
+// ZMK_MOKT(mokt_alt, LALT)
+// ZMK_MOKT(mokt_gui, LGUI)
+
+/ {
+    // conditional_layers {
+    //     compatible = "zmk,conditional-layers";
+
+    //     tri_layer {
+    //         if-layers = <L_LOW L_RAISE>;
+    //         then-layer = <L_MOUSE>;
+    //     };
+    // };
+    behaviors {
+        kt_on: key_toggle_on_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            display-name = "Key Toggle On";
+            toggle-mode = "on";
+        };
+        kt_off: key_toggle_off_only {
+            compatible = "zmk,behavior-key-toggle";
+            #binding-cells = <1>;
+            display-name = "Key Toggle off";
+            toggle-mode = "off";
+        };
+        // mv_win: mv_win {
+        //     compatible = "zmk,behavior-tri-state";
+        //     #binding-cells = <0>;
+        //     bindings = <&kt LGUI>, <&none>, <&kt LGUI>;
+        //     ignored-key-positions = <ARROWS>; // ignore arrows
+        // };
+        ctrl_h: ctrl_h {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kt LCTRL>, <&kt_off LCTRL>;
+            ignored-key-positions = <ARROWS LB5>; // ignore arrows
+        };
+        shift_h: shift_h {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&none>, <&kt LSHFT>, <&kt_off LSHFT>;
+            ignored-key-positions = <ARROWS LM5>; // ignore arrows
+        };
+        cswap: cswap {
+            compatible = "zmk,behavior-tri-state";    
+            #binding-cells = <0>;
+            bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
+        };
+        swap: swapper {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+            ignored-key-positions = <LB5 ARROWS>; // ignore left shift and arrows
+        };
+        
+        // shift on hold, tap for caps word
+        // caps: mod_tap {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     flavor = "hold-preferred";
+        //     tapping-term-ms = <200>;
+        //     bindings = <&kp>, <&caps_word>;
+        //     display-name = "Mod-Tap";
+        // };
+    };
+};
+
+ZMK_BASE_LAYER(Default,
+&kp ESC       &kp N1      &kp N2        &kp N3        &kp N4       &kp N5, 
+&kp TAB       &kp Q       &kp W         &kp E         &kp R        &kp T,
+&kp LCTRL     &hml LGUI A &hml LALT S   &hml LSHFT D  &hml LCTRL F &kp G,
+&capsDance    &kp Z       &kp X         &kp C         &kp V        &kp B,          &kp LBKT,
+                                        &kp LGUI,     &lt L_MOUSE DEL     &lt L_LOW BSPC   &lt L_NAV SPACE,
+
+              &kp N6      &kp N7        &kp N8        &kp N9       &kp N0          &kp GRAVE,
+              &kp Y       &kp U         &kp I         &kp O        &kp P           &kp MINUS,
+              &kp H       &hmr LCTRL J  &hmr LSHFT K  &hmr LALT L  &hmr LGUI SEMI  &kp SQT,
+&kp RBKT,     &kp N       &kp M         &kp COMMA     &kp DOT      &kp FSLH        &kp BSLH,
+&kp RET       &lt L_RAISE BSPC  &kp INS,&kp PSCRN 
+
+)
+ZMK_BASE_LAYER(Lower,
+&bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    ,
+&cswap      &kp N1       &kp N2       &kp N3       &kp N4       &kp N5           ,
+&kp GRAVE   &kp EXCL     &kp AT       &kp HASH     &kp DOLLAR   &kp PRCNT       ,
+&trans      &trans       &trans       &kp LC(C)    &trans       &kp LC(Z)       , &trans,
+                                      &trans,      &trans       &trans            &trans,
+
+         &trans    &trans    &trans    &trans    &trans    &trans   ,
+         &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &trans   ,
+         &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR  &kp TILDE,
+ &trans, &trans    &trans    &trans    &trans    &trans    &trans   ,
+ &trans  &trans    &trans,   &trans
+)
+
+ZMK_BASE_LAYER(Raise,
+&trans  &trans       &trans       &trans        &trans        &trans,
+&trans  &trans       &trans       &trans        &trans        &trans,
+&trans  TTAP(LGUI)   TTAP(LALT)   TTAP(LSHFT)   TTAP(LCTRL)  &trans,
+&trans  &trans       &trans       &trans        &trans        &trans,  &trans,
+                     &trans,      &trans        &kp DEL       &trans,
+
+        &trans  &trans  &trans  &trans   &trans  &trans,
+        &kp F7  &kp F8  &kp F9  &kp F12  &trans  &trans,
+        &kp F4  &kp F5  &kp F6  &kp F11  &trans  &trans,
+&trans, &kp F1  &kp F2  &kp F3  &kp F10  &trans  &trans,
+&trans  &trans  &trans, &trans
+)
+
+
+ZMK_BASE_LAYER(Nav,
+&trans       &trans    &trans    &trans    &trans     &trans          ,
+&swap        &kp PG_UP &kp HOME  &kp UP    &kp END    &kp RET         ,
+&ctrl_h      &kp PG_DN &kp LEFT  &kp DOWN  &kp RIGHT  &kp BSPC        ,
+&shift_h     &trans    &kp BSPC  &trans    &trans     &kp LS(LA(F12)),  &ext_power EP_TOG,
+                                 &trans,   &trans     &trans    &trans,
+
+         &trans  &trans        &trans        &kp F22      &kp F23      &kp F24,
+         &htt RPAR LPAR &htt RBRC LBRC &htt RBKT LBKT  &trans       &trans       &trans,
+        //  &trans  &mokt_ctrl  &mokt_shft  &mokt_alt  &mokt_gui  &trans,
+         &trans  TTAP(LCTRL)   TTAP(LSHFT)   TTAP(LALT)   TTAP(LGUI)  &trans,
+ &trans, &trans  &trans        &trans        &trans       &trans       &trans,
+ &trans  &trans  &trans,       &trans  
+)
+
+ZMK_BASE_LAYER(Mouse,
+&trans  &trans &trans         &trans         &trans          &trans,
+&trans  &trans &mkp LCLK      &mmv MOVE_UP   &mkp RCLK       &trans,
+&trans  &trans &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &trans,
+&trans  &trans &trans         &trans         &trans          &trans,  &trans,
+                              &trans,        &trans          &trans   &trans,
+
+        &trans  &trans  &trans  &trans   &trans  &trans,
+        &kp N7  &kp N8  &kp N9  &trans   &trans  &trans,
+        &kp N4  &kp N5  &kp N6  &trans   &trans  &trans,
+&trans, &kp N1  &kp N2  &kp N3  &trans   &trans  &trans,
+&trans  &kp N0  &kp DOT,&trans
+)
